@@ -9,10 +9,10 @@ export const zeroFill = (num: number | string): string | number => {
     return num;
   }
   const digit = Number(num);
-  if (num < 0) {
+  if (digit < 0) {
     return Math.abs(digit) < 10 ? `-0${Math.abs(digit)}` : `${digit}`;
   }
-  return num < 10 ? `0${digit}` : `${digit}`;
+  return digit < 10 ? `0${digit}` : `${digit}`;
 };
 
 /**
