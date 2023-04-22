@@ -1,6 +1,6 @@
 {
-  "name": "mew-utils",
-  "version": "1.0.0",
+  "name": "fe-gear",
+  "version": "1.0.1",
   "description": "Like a gear, tiny and useful frontend function tools written in typescript",
   "browser": "lib/index.mjs",
   "types": "lib/index.d.ts",
@@ -18,18 +18,18 @@
   },
   "keywords": [
     "utils",
-    "mew-utils"
+    "fe-gear"
   ],
-  "homepage": "https://github.com/CiroLee/mew-utils",
+  "homepage": "https://github.com/CiroLee/fe-gear",
   "bugs": {
-    "url": "https://github.com/CiroLee/mew-utils/issues"
+    "url": "https://github.com/CiroLee/fe-gear/issues"
   },
   "files": [
     "lib"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/CiroLee/mew-utils.git"
+    "url": "https://github.com/CiroLee/fe-gear.git"
   },
   "author": "cirolee<ciromail@126.com>",
   "license": "MIT",
