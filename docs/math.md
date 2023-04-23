@@ -2,7 +2,7 @@
 
 > 常用数学相关函数
 
-### zeroFill(num: number | number): string | unknown
+### zeroFill(num: number | number): string
 
 > 补零, 如果数字小于 10, 则在数字前补 0 占位。入参为数字或类数字的字符串(eg: '11')
 
