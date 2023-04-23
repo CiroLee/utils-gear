@@ -1,5 +1,6 @@
 import * as date from '@src/date';
 const mockDate = new Date('2022-1-18 12:12:12'); // 星期二
+const mockTimestamp = 1642479132;
 const mockWeeks = ['日', ' 一', '二', '三', '四', '五', '六'];
 describe('week test', () => {
   test('WEEK: get week by Date input', () => {
@@ -55,18 +56,23 @@ describe('dateFormat test', () => {
     expect(result).toBe('2022/1/18 12:12');
   });
   test('DATEFORMAT: date is timestamp', () => {
-    // github action 在美区， 时区差8h
-    const result = date.dateFormat(1642479132 * 1000);
+    const result = date.dateFormat(mockTimestamp * 1000);
     expect(result).toBe('2022-01-18 12:12:12');
   });
   test('DATEFORMAT: format is invalid', () => {
-    const result = date.dateFormat(1642479132 * 1000, 'yy-mm-dd');
+    const result = date.dateFormat(mockTimestamp * 1000, 'yy-mm-dd');
     expect(result).toBe('yy-01-18');
   });
   test('DATEFORMAT: padZero is false', () => {
-    const result = date.dateFormat(1642479132 * 1000, {
+    const result = date.dateFormat(mockTimestamp * 1000, {
       padZero: false,
     });
     expect(result).toBe('2022-1-18 12:12:12');
+  });
+
+  test('DATEFORMAT: invalid date', () => {
+    expect(() => {
+      date.dateFormat(String(mockTimestamp * 1000));
+    }).toThrowError();
   });
 });

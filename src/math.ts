@@ -3,10 +3,10 @@ import { BaseType } from './types';
 /**
  * @desc 补零, 如果数字小于10，则在数字前补充0占位
  */
-export const zeroFill = (num: number | string): string | number => {
+export const zeroFill = (num: number | string): string => {
   const invalidArr = [num === -Infinity, num === Infinity];
   if (isAnyTrue(invalidArr) || !isNumberLike(num)) {
-    return num;
+    return String(num);
   }
   const digit = Number(num);
   if (digit < 0) {

@@ -1,6 +1,6 @@
 ## Cookie
 
-> 常用的 cookie 操作封装, set, get, delete 方法均为静态方法
+> 常用的 cookie 操作静态类封装, set, get, delete 方法均为静态方法
 
 ### Cookie.get(name?: string): string | object | Nullish
 

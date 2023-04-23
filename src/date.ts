@@ -1,7 +1,7 @@
 import type { Nullish, Week, Time, DateFormatOption } from '@src/types';
 import { getType } from './utils';
 import { zeroFill } from './math';
-import { isAllTrue } from './validator';
+import { isAllTrue, isValidDate } from './validator';
 const weekMapZh = ['日', ' 一', '二', '三', '四', '五', '六'];
 const weekMapEn = [
   { val: 'Sunday', abbr: 'Sun.' },
@@ -38,13 +38,22 @@ export const week = (param?: Week | Time): string | Nullish => {
   }
   return weekIndex > -1 ? weekMapEn[weekIndex].val : null;
 };
+
 /**
  * @desc 格式化日期 默认日期格式为 yyyy-mm-dd HH:MM:SS 如果是unix时间戳, 需要精确到毫秒
  * @param date 日期
  * @param option 选项(可选参数)
  */
 export const dateFormat = (date: Time, option?: string | DateFormatOption): string => {
-  const _date = date instanceof Date ? date : new Date(date);
+  if (!isValidDate(date)) {
+    throw new Error('dateFormat: date is invalid');
+  }
+  const _date =
+    date instanceof Date
+      ? date
+      : typeof date === 'number'
+      ? new Date(date)
+      : new Date(String(date).replaceAll('-', '/'));
   let _option = {
     format: 'yyyy-mm-dd HH:MM:SS',
     padZero: true,

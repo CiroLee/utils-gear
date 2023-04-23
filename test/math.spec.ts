@@ -4,10 +4,10 @@ describe('zeroFill test', () => {
   test('ZEROFILL: invalid param that will return itself', () => {
     const param1 = -Infinity;
     const param2 = Infinity;
-    const param3 = '123' as unknown;
-    expect(math.zeroFill(param1)).toBe(param1);
-    expect(math.zeroFill(param2)).toBe(param2);
-    expect(math.zeroFill(param3 as number)).toBe(param3);
+    const param3 = '123';
+    expect(math.zeroFill(param1)).toBe(String(param1));
+    expect(math.zeroFill(param2)).toBe(String(param2));
+    expect(math.zeroFill(param3)).toBe(param3);
   });
   test('ZEROFILL: param le zero', () => {
     const param1 = -9;

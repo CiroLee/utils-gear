@@ -6,6 +6,10 @@
 
 > 获取星期数，默认返回中文日期；如果需要返回英文日期或英文简写日期，入参格式参考[Week](../src/types.ts)
 
+```typescript
+type Time = Date | string | number;
+```
+
 types
 
 ```typescript
