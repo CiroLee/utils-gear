@@ -76,3 +76,47 @@ describe('dateFormat test', () => {
     }).toThrowError();
   });
 });
+
+describe('dateOffset', () => {
+  const initialDate = new Date('2023-05-01T00:00:00.000Z');
+
+  it('should offset the year correctly', () => {
+    const result = date.dateOffset(initialDate, { type: 'year', offset: 2 });
+    expect(result.getFullYear()).toBe(2025);
+  });
+
+  it('should offset the month correctly', () => {
+    const result = date.dateOffset(initialDate, { type: 'month', offset: 3 });
+    expect(result.getMonth()).toBe(7);
+  });
+
+  it('should offset the day correctly', () => {
+    const result = date.dateOffset(initialDate, { type: 'day', offset: -5 });
+    expect(result.getDate()).toBe(26);
+  });
+
+  it('should offset the hour correctly', () => {
+    const result = date.dateOffset(initialDate, { type: 'hour', offset: 6 });
+    expect(result.getUTCHours()).toBe(6);
+  });
+
+  it('should offset the minute correctly', () => {
+    const result = date.dateOffset(initialDate, { type: 'minute', offset: 30 });
+    expect(result.getMinutes()).toBe(30);
+  });
+
+  it('should offset the second correctly', () => {
+    const result = date.dateOffset(initialDate, { type: 'second', offset: 45 });
+    expect(result.getSeconds()).toBe(45);
+  });
+
+  it('should offset the millisecond correctly', () => {
+    const result = date.dateOffset(initialDate, { type: 'millisecond', offset: 500 });
+    expect(result.getMilliseconds()).toBe(500);
+  });
+
+  it('should offset the week correctly', () => {
+    const result = date.dateOffset(initialDate, { type: 'week', offset: -2 });
+    expect(result.getDate()).toBe(17);
+  });
+});

@@ -2,6 +2,7 @@ export type Nullish = null | undefined;
 export type Time = Date | string | number;
 export type ObjType = Record<string | number | symbol, any>;
 export type BaseType = number | string | null | undefined | boolean | symbol;
+export type DateName = 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond' | 'week';
 export interface CookieParam {
   name: string; // 名称
   value: string; // cookie值

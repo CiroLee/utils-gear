@@ -1,4 +1,4 @@
-import type { Nullish, Week, Time, DateFormatOption } from '@src/types';
+import type { Nullish, Week, Time, DateFormatOption, DateName } from '@src/types';
 import { getType } from './utils';
 import { zeroFill } from './math';
 import { isAllTrue, isValidDate } from './validator';
@@ -89,4 +89,44 @@ export const dateFormat = (date: Time, option?: string | DateFormatOption): stri
     .replace(/HH/g, `${o.HH}`)
     .replace(/MM/g, `${o.MM}`)
     .replace(/SS/g, `${o.SS}`);
+};
+
+/**
+ * @description 偏移日期函数
+ * @param {Date} date - 要偏移的日期对象
+ * @param {{ type: DateName, offset: number }} config - 偏移的配置对象
+ * @returns {Date} - 偏移后的日期对象
+ */
+export const dateOffset = (date: Date, config: { type: DateName; offset: number }): Date => {
+  const { type, offset } = config;
+  const newDate = new Date(date.getTime());
+  switch (type) {
+    case 'year':
+      newDate.setFullYear(newDate.getFullYear() + offset);
+      break;
+    case 'month':
+      newDate.setMonth(newDate.getMonth() + offset);
+      break;
+    case 'day':
+      newDate.setDate(newDate.getDate() + offset);
+      break;
+    case 'hour':
+      newDate.setHours(newDate.getHours() + offset);
+      break;
+    case 'minute':
+      newDate.setMinutes(newDate.getMinutes() + offset);
+      break;
+    case 'second':
+      newDate.setSeconds(newDate.getSeconds() + offset);
+      break;
+    case 'millisecond':
+      newDate.setMilliseconds(newDate.getMilliseconds() + offset);
+      break;
+    case 'week':
+      newDate.setDate(newDate.getDate() + offset * 7);
+      break;
+    default:
+      break;
+  }
+  return newDate;
 };
