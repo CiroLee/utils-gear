@@ -1,6 +1,6 @@
 import * as utils from '@src/utils';
 
-describe('getType function test', () => {
+describe('utils test', () => {
   test('GETTYPE: undefined type', () => {
     expect(utils.getType()).toBe('undefined');
   });
@@ -59,5 +59,17 @@ describe('getType function test', () => {
       expect(calls[0][0]).toEqual(2);
       done();
     }, 50);
+  });
+  test('getPlatformType: valid userAgent', () => {
+    const ua =
+      // eslint-disable-next-line max-len
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3';
+    expect(utils.getPlatformType(ua)).toBe('macOS');
+  });
+  test('getPlatformType: invalid userAgent', () => {
+    const ua =
+      // eslint-disable-next-line max-len
+      'Mozilla/5.0 (Unknown; Unknown; Unknown) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3';
+    expect(utils.getPlatformType(ua)).toBe('unknown');
   });
 });

@@ -18,7 +18,7 @@ getType(null); // 'null'
 
 > 节流函数
 
-```ts
+```typescript
 window.addEventListener(
   'resize',
   throttle(function () {
@@ -33,7 +33,7 @@ window.addEventListener(
 
 > 防抖函数
 
-```ts
+```typescript
 $('input').addEventListener(
   'input',
   debounce((event) => {
@@ -41,4 +41,13 @@ $('input').addEventListener(
   }, 250),
 );
 // 最多每250毫秒打印输入的内容
+```
+
+### getPlatformType(ua: string): string
+
+> 获取平台类型
+
+```typescript
+const ua = window.navigator.userAgent;
+getPlatformType(ua); // 'macOS'
 ```
