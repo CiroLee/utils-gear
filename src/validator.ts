@@ -65,3 +65,9 @@ export const IsPrime = (num: number): boolean => {
   }
   return true;
 };
+/**
+ * @desc 是否为暗色模式
+ */
+export const isDarkMode = () => {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+};

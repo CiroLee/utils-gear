@@ -18,7 +18,7 @@ getType(null); // 'null'
 
 > 节流函数
 
-```ts
+```typescript
 window.addEventListener(
   'resize',
   throttle(function () {
@@ -33,7 +33,7 @@ window.addEventListener(
 
 > 防抖函数
 
-```ts
+```typescript
 $('input').addEventListener(
   'input',
   debounce((event) => {

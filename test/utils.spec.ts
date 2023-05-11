@@ -1,6 +1,6 @@
 import * as utils from '@src/utils';
 
-describe('getType function test', () => {
+describe('utils test', () => {
   test('GETTYPE: undefined type', () => {
     expect(utils.getType()).toBe('undefined');
   });
