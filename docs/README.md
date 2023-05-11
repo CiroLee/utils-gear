@@ -8,4 +8,5 @@
 - [color](color.md)
 - [math](math.md)
 - [object](object.md)
+- [browser](browser.md)
 - [validator](validator.md)
