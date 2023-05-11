@@ -42,12 +42,3 @@ $('input').addEventListener(
 );
 // 最多每250毫秒打印输入的内容
 ```
-
-### getPlatformType(ua: string): string
-
-> 获取平台类型
-
-```typescript
-const ua = window.navigator.userAgent;
-getPlatformType(ua); // 'macOS'
-```

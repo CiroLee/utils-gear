@@ -25,27 +25,3 @@ export const debounce = (fn: Function, delay = 300) => {
     timer = setTimeout(() => fn.apply(this, args), delay);
   };
 };
-
-/**
- * @desc 获取平台
- * @param ua user-agent
- */
-export const getPlatformType = (ua: string): string => {
-  const platformTypes = [
-    { regex: /windows/i, type: 'Windows' },
-    { regex: /macintosh|mac os x/i, type: 'macOS' },
-    { regex: /android/i, type: 'Android' },
-    { regex: /iphone/i, type: 'iPhone' },
-    { regex: /ipad/i, type: 'iPad' },
-    { regex: /ipod/i, type: 'iPod' },
-    { regex: /blackberry/i, type: 'BlackBerry' },
-    { regex: /linux/i, type: 'Linux' },
-  ];
-
-  for (let i = 0; i < platformTypes.length; i++) {
-    if (platformTypes[i].regex.test(ua)) {
-      return platformTypes[i].type;
-    }
-  }
-  return 'unknown';
-};

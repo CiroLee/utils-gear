@@ -6,6 +6,7 @@ export * from './validator';
 export * from './cookie';
 export * from './string';
 export * from './storage';
+export * from './browser';
 export { hslToRgb, rgbToHsl, hexToRgb, rgbToHex, isDarkColor } from './color';
 // export type file
 export * from './types';
