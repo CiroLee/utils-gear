@@ -10,14 +10,14 @@
 encryptedPhone(13311112222); // '133****2222'
 ```
 
-### transFirstLetterBy(str: string, to: 'upper' | 'lower'): string
+### transFirstLetterTo(str: string, to: 'upper' | 'lower'): string
 
 > 字符串首字母大小写转换
 
 ```typescript
-transFirstLetterBy('abc', 'upper'); // Abc
-transFirstLetterBy('abc-de', 'upper'); // Abc-de''
-transFirstLetterBy('ABC', 'lower'); // aBC
+transFirstLetterTo('abc', 'upper'); // Abc
+transFirstLetterTo('abc-de', 'upper'); // Abc-de''
+transFirstLetterTo('ABC', 'lower'); // aBC
 ```
 
 ### whiteSpace(num: number): string
@@ -42,17 +42,19 @@ pascalCase('foo-bar'); // FooBar
 pascalCase('Foo-Bar'); // FooBar
 ```
 
-### kebabCase(str: string): string       
+### kebabCase(str: string): string
 
-> 字符串转kebab-case     
+> 字符串转 kebab-case
+
 ```typescript
 kebabCase('FooBar'); // foo-bar
 kebabCase('foo bar'); // foo-bar
 ```
 
-### snakeCase(str: string): string      
+### snakeCase(str: string): string
 
-> 字符串转snake_case       
+> 字符串转 snake_case
+
 ```typescript
 snakeCase('fooBar'); // foo_bar
 snakeCase('FooBar'); // foo_bar

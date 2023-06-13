@@ -13,7 +13,7 @@ export const encryptedPhone = (num: string | number): string => {
  * @param str string
  * @param to 'upper' | 'lower'
  */
-export const transFirstLetterBy = (str: string, to: 'upper' | 'lower'): string => {
+export const transFirstLetterTo = (str: string, to: 'upper' | 'lower'): string => {
   if (typeof str !== 'string') return str;
   return str.replace(/^\S/, (L) => (to === 'upper' ? L.toUpperCase() : L.toLowerCase()));
 };
@@ -48,15 +48,15 @@ export const pascalCase = (str: string): string => {
  */
 export const kebabCase = (str: string): string => {
   const matches = str.match(convertRefExp) as RegExpExecArray;
-  return matches.map(x => x.toLowerCase()).join('-');
-}
+  return matches.map((x) => x.toLowerCase()).join('-');
+};
 /*
  * @desc 字符串转蛇式(snake_case)
-*/
+ */
 export const snakeCase = (str: string) => {
   const matches = str.match(convertRefExp) as RegExpExecArray;
-  return matches.map(x => x.toLowerCase()).join('_');
-}
+  return matches.map((x) => x.toLowerCase()).join('_');
+};
 /*
  * @desc 删除字符串中的指定索引的字符
  * @param str 目标字符串

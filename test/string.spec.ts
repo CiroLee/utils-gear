@@ -17,15 +17,15 @@ describe('encryptedPhone test', () => {
 describe('upperCaseFirstLetter test', () => {
   test('UPPERCASEFIRSTLETTER: param is a string, to upper', () => {
     const param = 'i am a boy';
-    expect(str.transFirstLetterBy(param, 'upper')).toBe('I am a boy');
+    expect(str.transFirstLetterTo(param, 'upper')).toBe('I am a boy');
   });
-  test('TRANSFIRSTLETTERBY: to lower', () => {
+  test('transFirstLetterTo: to lower', () => {
     const param = 'I am A boy';
-    expect(str.transFirstLetterBy(param, 'lower')).toBe('i am A boy');
+    expect(str.transFirstLetterTo(param, 'lower')).toBe('i am A boy');
   });
   test('UPPERCASEFIRSTLETTER: param is a not string', () => {
     const param = ['i am a boy'];
-    expect(str.transFirstLetterBy(param as unknown as string, 'lower')).toEqual(param);
+    expect(str.transFirstLetterTo(param as unknown as string, 'lower')).toEqual(param);
   });
 });
 
@@ -112,8 +112,8 @@ describe('string case convert test', () => {
       },
       {
         s: 'Foo-bar rest',
-        v: 'foo_bar_rest'
-      }
+        v: 'foo_bar_rest',
+      },
     ];
     strArr.forEach((el) => {
       expect(str.snakeCase(el.s)).toBe(el.v);
@@ -135,8 +135,8 @@ describe('string case convert test', () => {
       },
       {
         s: 'Foo-bar rest',
-        v: 'foo-bar-rest'
-      }
+        v: 'foo-bar-rest',
+      },
     ];
     strArr.forEach((el) => {
       expect(str.kebabCase(el.s)).toBe(el.v);
