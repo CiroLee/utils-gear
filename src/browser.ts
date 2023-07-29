@@ -1,22 +1,21 @@
+import type { PlatformType } from './types';
 /**
- * @desc 获取平台
- * @param ua user-agent
+ * @desc 通过userAgent获取常用平台类型
+ * @param ua {String} userAgent
  */
-export const getPlatformType = (ua: string): string => {
-  const platformTypes = [
-    { regex: /windows/i, type: 'Windows' },
-    { regex: /macintosh|mac os x/i, type: 'macOS' },
-    { regex: /android/i, type: 'Android' },
-    { regex: /iphone/i, type: 'iPhone' },
-    { regex: /ipad/i, type: 'iPad' },
-    { regex: /ipod/i, type: 'iPod' },
-    { regex: /blackberry/i, type: 'BlackBerry' },
-    { regex: /linux/i, type: 'Linux' },
+export const getPlatformType = (ua: string): PlatformType => {
+  const platformMatchers = [
+    { type: 'iPhone', regex: /\b(iPhone)\b/i },
+    { type: 'iPad', regex: /\b(iPad)\b/i },
+    { type: 'Android', regex: /Android/i },
+    { type: 'Windows', regex: /Windows/i },
+    { type: 'macOS', regex: /\b(Macintosh|Mac OS X)\b/i },
+    { type: 'Linux', regex: /Linux/i },
   ];
 
-  for (let i = 0; i < platformTypes.length; i++) {
-    if (platformTypes[i].regex.test(ua)) {
-      return platformTypes[i].type;
+  for (const matcher of platformMatchers) {
+    if (matcher.regex.test(ua)) {
+      return matcher.type as PlatformType;
     }
   }
   return 'unknown';

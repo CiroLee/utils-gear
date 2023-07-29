@@ -24,3 +24,5 @@ export interface StorageItem {
   value: ObjType | BaseType;
   expires?: number;
 }
+
+export type PlatformType = 'iPhone' | 'iPad' | 'Android' | 'Windows' | 'macOS' | 'Linux' | 'unknown';

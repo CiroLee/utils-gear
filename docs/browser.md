@@ -2,9 +2,9 @@
 
 > 浏览器相关函数
 
-### getPlatformType(ua: string): string
+### getPlatformType(ua: string): [PlatformType](../src/types.ts)
 
-> 获取平台类型
+> 通过userAgent获取常用平台类型
 
 ```typescript
 const ua = window.navigator.userAgent;
