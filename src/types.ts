@@ -26,3 +26,4 @@ export interface StorageItem {
 }
 
 export type PlatformType = 'iPhone' | 'iPad' | 'Android' | 'Windows' | 'macOS' | 'Linux' | 'unknown';
+export type SpaceOption = 'start' | 'end' | 'both' | 'all';

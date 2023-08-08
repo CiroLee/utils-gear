@@ -103,3 +103,23 @@ describe('isDarkColor test', () => {
     expect(colors.isDarkColor(color)).toBeTruthy();
   });
 });
+
+describe('randomHex test', () => {
+  it('should return a string', () => {
+    expect(typeof colors.randomHex()).toBe('string');
+  });
+
+  it('should return a 7 character hex color code', () => {
+    expect(colors.randomHex().length).toBe(7);
+  });
+
+  it('should return a valid hex color', () => {
+    expect(colors.randomHex()).toMatch(/^#([A-Fa-f0-9]{6})$/);
+  });
+
+  it('should return a different color each time', () => {
+    const color1 = colors.randomHex();
+    const color2 = colors.randomHex();
+    expect(color1).not.toBe(color2);
+  });
+});

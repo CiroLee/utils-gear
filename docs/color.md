@@ -2,6 +2,14 @@
 
 > 颜色相关函数。包含颜色转换，深色判断等函数
 
+### randomHex(): string
+
+> 随机生成一个16进制颜色
+
+```typescript
+randomHex(); // #ffffff
+```
+
 ### hexToRgb(hex: string): number[]
 
 > hex 颜色转 rgb 颜色。hex 为 6 为十六进制颜色，不包含透明度信息

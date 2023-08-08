@@ -1,3 +1,5 @@
+import { SpaceOption } from './types';
+
 /**
  * @desc 隐藏手机中间四位数字
  * @param num string
@@ -74,4 +76,37 @@ export const deleteAt = (str: string, index: number): string => {
 */
 export const replaceAt = (str: string, index: number, char: string): string => {
   return str.substring(0, index) + char + str.substring(index + 1);
+};
+
+/**
+ * @desc 去除字符串中的空格
+ * @param str 目标字符串
+ * @param option 'start' | 'end' | 'middle' | 'all', 默认为all, 去除所有空格
+ * @returns string
+ */
+export const removeSpaces = (str: string, option: SpaceOption = 'all') => {
+  switch (option) {
+    case 'start':
+      return str.trimStart();
+    case 'end':
+      return str.trimEnd();
+    case 'both':
+      return str.trim();
+    case 'all':
+      return str.replace(/\s/g, '');
+    default:
+      return str;
+  }
+};
+
+/**
+ * @desc 生成一个uuid(v4)
+ * @returns string
+ */
+export const uuid = (): string => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
 };

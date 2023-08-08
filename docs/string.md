@@ -75,3 +75,22 @@ replaceAt('footbar', 3, 'T'); // fooTbar
 ```typescript
 deleteAt('footbar', 3); // foobar
 ```
+
+### removeSpaces(str: string, option: 'start' | 'end' | 'both' | 'all' = 'all'): string
+
+> 移除字符串中指定位置的空格
+
+```typescript
+removeSpaces('  hello world  '); // "helloworld"
+removeSpaces('  hello world  ', 'start'); // "hello world  "
+removeSpaces('  hello world  ', 'end'); // "  hello world"
+removeSpaces('  hello world  ', 'both'); // "hello world"
+```
+
+### uuid(): string
+
+> 随机生成一个uuid(v4)
+
+```typescript
+uuid(); // '4e5f6f7f-8f9a-11ec-9dcb-0242ac120002'
+```

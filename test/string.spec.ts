@@ -152,3 +152,33 @@ describe('replaceAr and deleteAt test', () => {
     expect(str.replaceAt('footbar', 3, 'T')).toBe('fooTbar');
   });
 });
+
+describe('removeSpaces test', () => {
+  test('remove the start space', () => {
+    expect(str.removeSpaces('  hello world  ', 'start')).toBe('hello world  ');
+  });
+  test('remove the end space', () => {
+    expect(str.removeSpaces('  hello world  ', 'end')).toBe('  hello world');
+  });
+  test('remove both start end end spaces', () => {
+    expect(str.removeSpaces('  hello world  ', 'both')).toBe('hello world');
+  });
+  test('remove all spaces', () => {
+    expect(str.removeSpaces('  hello world  ')).toBe('helloworld');
+  });
+  test('invalid option', () => {
+    expect(str.removeSpaces('  hello world  ', 'invalid' as any)).toBe('  hello world  ');
+  });
+});
+
+describe('uuid test', () => {
+  it('should generate a uuid string', () => {
+    expect(str.uuid()).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/);
+  });
+
+  it('should generate different uuid each time', () => {
+    const id1 = str.uuid();
+    const id2 = str.uuid();
+    expect(id1).not.toBe(id2);
+  });
+});

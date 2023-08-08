@@ -122,3 +122,10 @@ export function toHSL(color: string): number[] {
 
   return hsl;
 }
+/**
+ * @desc 生成随机的16进制颜色
+ * @returns string
+ */
+export function randomHex(): string {
+  return `#${Math.random().toString(16).slice(2, 8)}`;
+}
