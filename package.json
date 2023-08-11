@@ -1,9 +1,9 @@
 {
   "name": "fe-gear",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Like a gear, tiny and useful frontend function tools written in typescript",
   "browser": "lib/index.mjs",
-  "types": "lib/index.d.ts",
+  "types": "lib/index.d.mts",
   "scripts": {
     "prepare": "husky install",
     "build": "tsup",
@@ -12,21 +12,14 @@
     "test:unit": "jest --coverage"
   },
   "lint-staged": {
-    "src/**/*.{js,ts,tsx,json,md}": [
-      "eslint --config .eslintrc.js"
-    ]
+    "src/**/*.{js,ts,tsx,json,md}": ["eslint --config .eslintrc.js"]
   },
-  "keywords": [
-    "utils",
-    "fe-gear"
-  ],
+  "keywords": ["utils", "fe-gear"],
   "homepage": "https://github.com/CiroLee/fe-gear",
   "bugs": {
     "url": "https://github.com/CiroLee/fe-gear/issues"
   },
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "repository": {
     "type": "git",
     "url": "https://github.com/CiroLee/fe-gear.git"
