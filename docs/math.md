@@ -48,5 +48,13 @@ intersection([1, 2], ['2', 3]); // []
 
 ```typescript
 union([1, 2], [2, 3]); // [1,2,3]
-uinon([1, 2], [2, '3']); // [1,2,'3'];
+union([1, 2], [2, '3']); // [1,2,'3'];
+```
+
+### pickUniqueNumber(array: number[], n: number): number[]
+
+> 从数组中选出n个不重复的数字
+
+```typescript
+pickUniqueNumber([1, 2, 3, 4], 2); // e.g. [1,4]
 ```

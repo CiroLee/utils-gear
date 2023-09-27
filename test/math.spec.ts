@@ -94,3 +94,27 @@ describe('union test', () => {
     expect(result).toEqual([1, 2, '1', '2']);
   });
 });
+
+describe('pickUniqueNumbers', () => {
+  it('should pick n unique elements from array', () => {
+    const arr = [1, 2, 2, 3];
+    const result = math.pickUniqueNumber(arr, 3);
+
+    expect(new Set(result).size).toBe(3);
+    expect(result.length).toBe(3);
+  });
+
+  it('should throw if n > array length', () => {
+    const arr = [1, 2];
+    expect(() => {
+      math.pickUniqueNumber(arr, 3);
+    }).toThrowError();
+  });
+
+  it('should handle duplicate elements', () => {
+    const arr = [1, 2, 2, 3];
+    const result = math.pickUniqueNumber(arr, 3);
+
+    expect(new Set(result).size).toBe(3);
+  });
+});

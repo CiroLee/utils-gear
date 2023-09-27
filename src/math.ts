@@ -43,3 +43,27 @@ export const intersection = (a: BaseType[], b: BaseType[]): BaseType[] => {
  * @desc 计算两个基础数据类型数组的并集
  */
 export const union = (a: BaseType[], b: BaseType[]): BaseType[] => [...new Set([...a, ...b])];
+
+/**
+ * @desc 从数组中选出n个不重复的数字
+ * @param array: number[] 待选取的数组
+ * @param n: number 选取的数量
+ * @return number[]
+ */
+
+export const pickUniqueNumber = (array: number[], n: number): number[] => {
+  const deduped = [...new Set(array)];
+  if (n > deduped.length) {
+    throw new Error('n must be less than or equal to deduped array length');
+  }
+
+  // 打乱数组
+  deduped.sort(() => Math.random() - 0.5);
+  const picked = new Set<number>();
+
+  for (let i = 0; i < n; i++) {
+    picked.add(deduped[i]);
+  }
+
+  return [...picked];
+};

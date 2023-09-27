@@ -1,6 +1,6 @@
 {
   "name": "fe-gear",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Like a gear, tiny and useful frontend function tools written in typescript",
   "browser": "lib/index.mjs",
   "types": "lib/index.d.mts",
@@ -12,14 +12,21 @@
     "test:unit": "jest --coverage"
   },
   "lint-staged": {
-    "src/**/*.{js,ts,tsx,json,md}": ["eslint --config .eslintrc.js"]
+    "src/**/*.{js,ts,tsx,json,md}": [
+      "eslint --config .eslintrc.js"
+    ]
   },
-  "keywords": ["utils", "fe-gear"],
+  "keywords": [
+    "utils",
+    "fe-gear"
+  ],
   "homepage": "https://github.com/CiroLee/fe-gear",
   "bugs": {
     "url": "https://github.com/CiroLee/fe-gear/issues"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/CiroLee/fe-gear.git"
@@ -27,20 +34,20 @@
   "author": "cirolee<ciromail@126.com>",
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/config-conventional": "^17.6.7",
-    "@types/jest": "^29.5.3",
-    "@types/node": "^20.4.8",
-    "@typescript-eslint/eslint-plugin": "^6.3.0",
-    "@typescript-eslint/parser": "^6.3.0",
-    "commitlint": "^17.6.7",
-    "eslint": "^8.46.0",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.7.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "commitlint": "^17.7.1",
+    "eslint": "^8.50.0",
     "husky": "^8.0.3",
-    "jest": "^29.6.2",
-    "jest-environment-jsdom": "^29.6.2",
-    "lint-staged": "^13.2.3",
-    "prettier": "^3.0.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
     "ts-jest": "^29.1.1",
     "tsup": "^7.2.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   }
 }
