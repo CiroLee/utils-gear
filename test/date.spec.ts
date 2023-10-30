@@ -81,42 +81,57 @@ describe('dateOffset', () => {
   const initialDate = new Date('2023-05-01T00:00:00.000Z');
 
   it('should offset the year correctly', () => {
-    const result = date.dateOffset(initialDate, { type: 'year', offset: 2 });
+    const result = date.dateOffset(initialDate, 2, 'year');
     expect(result.getFullYear()).toBe(2025);
   });
 
   it('should offset the month correctly', () => {
-    const result = date.dateOffset(initialDate, { type: 'month', offset: 3 });
-    expect(result.getMonth()).toBe(7);
+    const result = date.dateOffset(initialDate, 3, 'month');
+    expect(result.getMonth() + 1).toBe(7);
   });
 
   it('should offset the day correctly', () => {
-    const result = date.dateOffset(initialDate, { type: 'day', offset: -5 });
+    const result = date.dateOffset(initialDate, -5, 'day');
     expect(result.getDate()).toBe(26);
   });
 
   it('should offset the hour correctly', () => {
-    const result = date.dateOffset(initialDate, { type: 'hour', offset: 6 });
+    const result = date.dateOffset(initialDate, 6, 'hour');
     expect(result.getUTCHours()).toBe(6);
   });
 
   it('should offset the minute correctly', () => {
-    const result = date.dateOffset(initialDate, { type: 'minute', offset: 30 });
+    const result = date.dateOffset(initialDate, 30, 'minute');
     expect(result.getMinutes()).toBe(30);
   });
 
   it('should offset the second correctly', () => {
-    const result = date.dateOffset(initialDate, { type: 'second', offset: 45 });
+    const result = date.dateOffset(initialDate, 45, 'second');
     expect(result.getSeconds()).toBe(45);
   });
 
   it('should offset the millisecond correctly', () => {
-    const result = date.dateOffset(initialDate, { type: 'millisecond', offset: 500 });
+    const result = date.dateOffset(initialDate, 500, 'millisecond');
     expect(result.getMilliseconds()).toBe(500);
   });
 
   it('should offset the week correctly', () => {
-    const result = date.dateOffset(initialDate, { type: 'week', offset: -2 });
+    const result = date.dateOffset(initialDate, -2, 'week');
     expect(result.getDate()).toBe(17);
+  });
+  it('invalid date', () => {
+    expect(() => {
+      date.dateOffset('2022-1-1' as unknown as Date, 2, 'year');
+    }).toThrowError();
+  });
+  it('invalid amount', () => {
+    expect(() => {
+      date.dateOffset(initialDate, '2' as unknown as number, 'year');
+    }).toThrowError();
+  });
+  it('invalid timeUnit', () => {
+    expect(() => {
+      date.dateOffset(initialDate, 2, 'years' as any);
+    }).toThrowError();
   });
 });

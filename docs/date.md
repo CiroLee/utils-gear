@@ -54,12 +54,12 @@ dateFormat(1642479132 * 1000, {
 > 日期偏移函数。支持年，月，日等格式
 
 ```typescript
-type DateName = 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond' | 'week';
+type TimeUnit = 'millisecond' | 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'year';
 ```
 
 ```typescript
 const initialDate = new Date('2023-05-01'); // 初始日期为2023年5月1日
-dateOffset(initialDate, { type: 'year', offset: 2 }); // 2025-06-01T00:00:00.000Z
-dateOffset(initialDate, { type: 'month', offset: 3 }); // 2023-08-01T00:00:00.000Z
-dateOffset(initialDate, { type: 'month', offset: -3 }); // 2023-02-01T00:00:00.000Z
+dateOffset(initialDate, 2, 'year'); // 2025-06-01T00:00:00.000Z
+dateOffset(initialDate, 3, 'month'); // 2023-08-01T00:00:00.000Z
+dateOffset(initialDate, -3, 'month'); // 2023-02-01T00:00:00.000Z
 ```

@@ -1,7 +1,8 @@
-import type { Nullish, Week, Time, DateFormatOption, DateName } from '@src/types';
+import type { Nullish, Week, Time, DateFormatOption, TimeUnit } from '@src/types';
 import { getType } from './utils';
 import { zeroFill } from './math';
 import { isAllTrue, isValidDate } from './validator';
+import { TimeUintMap } from './constants';
 const weekMapZh = ['日', ' 一', '二', '三', '四', '五', '六'];
 const weekMapEn = [
   { val: 'Sunday', abbr: 'Sun.' },
@@ -92,41 +93,22 @@ export const dateFormat = (date: Time, option?: string | DateFormatOption): stri
 };
 
 /**
- * @description 偏移日期函数
- * @param {Date} date - 要偏移的日期对象
- * @param {{ type: DateName, offset: number }} config - 偏移的配置对象
- * @returns {Date} - 偏移后的日期对象
+ * 日期偏移函数。支持年，月，日, 周，时，分，秒，毫秒等格式
+ *
+ * @param {Date} date - 初始日期
+ * @param {number} amount - 操作值，整数为加，负数为减
+ * @param {TimeUnit} timeUnit - 操作单位.
+ * @return {Date}
  */
-export const dateOffset = (date: Date, config: { type: DateName; offset: number }): Date => {
-  const { type, offset } = config;
-  const newDate = new Date(date.getTime());
-  switch (type) {
-    case 'year':
-      newDate.setFullYear(newDate.getFullYear() + offset);
-      break;
-    case 'month':
-      newDate.setMonth(newDate.getMonth() + offset);
-      break;
-    case 'day':
-      newDate.setDate(newDate.getDate() + offset);
-      break;
-    case 'hour':
-      newDate.setHours(newDate.getHours() + offset);
-      break;
-    case 'minute':
-      newDate.setMinutes(newDate.getMinutes() + offset);
-      break;
-    case 'second':
-      newDate.setSeconds(newDate.getSeconds() + offset);
-      break;
-    case 'millisecond':
-      newDate.setMilliseconds(newDate.getMilliseconds() + offset);
-      break;
-    case 'week':
-      newDate.setDate(newDate.getDate() + offset * 7);
-      break;
-    default:
-      break;
+export const dateOffset = (date: Date, amount: number, timeUnit: TimeUnit): Date => {
+  if (getType(date) !== 'date') {
+    throw new Error('dateOffset: date is invalid');
   }
-  return newDate;
+  if (typeof amount !== 'number') {
+    throw new Error('dateOffset: amount is invalid');
+  }
+  if (!TimeUintMap[timeUnit]) {
+    throw new Error('dateOffset: timeUnit is invalid');
+  }
+  return new Date(date.getTime() + amount * TimeUintMap[timeUnit]);
 };
