@@ -49,7 +49,7 @@ dateFormat(1642479132 * 1000, {
 }); // 2022/1/18 12:12:12
 ```
 
-### dateOffset(date: Date, config: { type: DateName; offset: number }): Date
+### dateOffset(date: Date, amount: number, unit: TimeUnit): Date
 
 > 日期偏移函数。支持年，月，日等格式
 
