@@ -5,3 +5,4 @@ coverage
 .idea
 .Ds_Store
 playground.js
+playground.ts

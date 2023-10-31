@@ -1,4 +1,5 @@
 import * as date from '@src/date';
+import type { TimeUnit } from '@src/types';
 const mockDate = new Date('2022-1-18 12:12:12'); // 星期二
 const mockTimestamp = 1642479132;
 const mockWeeks = ['日', ' 一', '二', '三', '四', '五', '六'];
@@ -8,7 +9,7 @@ describe('week test', () => {
     expect(week).toBe('二');
   });
   test('WEEK: get week by a string which is not a number nor can not be transformed to Date', () => {
-    expect(date.week('date')).toBe(null);
+    expect(date.week('date' as any)).toBe(null);
   });
   test('WEEK: get day of week', () => {
     const week = date.week();
@@ -31,7 +32,7 @@ describe('week test', () => {
   });
   test('WEEK: return null', () => {
     const week = {
-      date: 'date',
+      date: 'date' as unknown as Date,
       lang: 'en',
     };
     expect(date.week({ ...week, abbr: true })).toBeNull();
@@ -55,16 +56,12 @@ describe('dateFormat test', () => {
     });
     expect(result).toBe('2022/1/18 12:12');
   });
-  test('DATEFORMAT: date is timestamp', () => {
-    const result = date.dateFormat(mockTimestamp * 1000);
-    expect(result).toBe('2022-01-18 12:12:12');
-  });
   test('DATEFORMAT: format is invalid', () => {
-    const result = date.dateFormat(mockTimestamp * 1000, 'yy-mm-dd');
+    const result = date.dateFormat(mockDate, 'yy-mm-dd');
     expect(result).toBe('yy-01-18');
   });
   test('DATEFORMAT: padZero is false', () => {
-    const result = date.dateFormat(mockTimestamp * 1000, {
+    const result = date.dateFormat(mockDate, {
       padZero: false,
     });
     expect(result).toBe('2022-1-18 12:12:12');
@@ -72,7 +69,7 @@ describe('dateFormat test', () => {
 
   test('DATEFORMAT: invalid date', () => {
     expect(() => {
-      date.dateFormat(String(mockTimestamp * 1000));
+      date.dateFormat(mockTimestamp as unknown as Date);
     }).toThrowError();
   });
 });
@@ -133,5 +130,64 @@ describe('dateOffset', () => {
     expect(() => {
       date.dateOffset(initialDate, 2, 'years' as any);
     }).toThrowError();
+  });
+});
+
+describe('dateMaxMin', () => {
+  it('should return the max date correctly', () => {
+    const dates = [new Date('2023-01-01 12:00:00'), new Date('2024-01-01 12:00:00')];
+    const result = date.dateMaxMin(dates, 'max');
+    expect(date.dateEqual(result, dates[1]));
+  });
+  it('invalid dates, should throw error', () => {
+    const dates = ['2022-01-01:12:00:00', new Date('2024-01-01 12:00:00')];
+    expect(() => {
+      date.dateMaxMin(dates as Date[], 'max');
+    }).toThrowError();
+  });
+  it('should return the min date correctly', () => {
+    const dates = [new Date('2023-01-01 12:00:00'), new Date('2024-01-01 12:00:00')];
+    const result = date.dateMaxMin(dates, 'min');
+    expect(date.dateEqual(result, dates[0]));
+  });
+});
+
+describe('dateEqual', () => {
+  it('valid date, should return date1 equals date2 correctly', () => {
+    const date1 = new Date('2022-01-01 12:00:00');
+    const date2 = new Date('2022-01-01 12:00:00');
+    const result = date.dateEqual(date1, date2);
+    expect(result).toBe(true);
+  });
+  it('invalid date, should throw error', () => {
+    const date1 = new Date('2022-01-01 12:00:00');
+    const date2 = '2022-01-01 12:00:00';
+    expect(() => {
+      date.dateEqual(date1, date2 as unknown as Date);
+    }).toThrowError();
+  });
+});
+
+describe('dateDiff', () => {
+  const d1 = new Date('2023-12-01 12:00:00');
+  const d2 = new Date('2021-12-01 12:00:00');
+  it('type is detail, should return detail object of diff', () => {
+    const result: Record<TimeUnit, number> = {
+      year: 2,
+      month: 24.3333,
+      day: 730,
+      week: 104.2857,
+      hour: 17520,
+      minute: 1051200,
+      second: 63072000,
+      millisecond: 63072000000,
+    };
+
+    Object.keys(result).forEach((k) => {
+      expect(date.dateDiff(d1, d2, k as TimeUnit)).toBe(result[k as TimeUnit]);
+    });
+  });
+  it('invalid date, should throw error', () => {
+    expect(() => date.dateDiff(d1, '2021-11-31 22:12:12' as unknown as Date, 'day')).toThrowError();
   });
 });

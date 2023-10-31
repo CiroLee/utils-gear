@@ -1,7 +1,8 @@
-import type { Nullish, Week, Time, DateFormatOption, TimeUnit } from '@src/types';
+/* eslint-disable no-unused-vars */
+import type { Nullish, Week, DateFormatOption, TimeUnit, DateDetail } from '@src/types';
 import { getType } from './utils';
-import { zeroFill } from './math';
-import { isAllTrue, isValidDate } from './validator';
+import { max, min, zeroFill } from './math';
+import { isAllTrue } from './validator';
 import { TimeUintMap } from './constants';
 const weekMapZh = ['日', ' 一', '二', '三', '四', '五', '六'];
 const weekMapEn = [
@@ -16,19 +17,20 @@ const weekMapEn = [
 /**
  * @desc 返回指定日期的星期数, 如果未传入参数, 默认返回当天日期的中文星期数
  */
-export const week = (param?: Week | Time): string | Nullish => {
+export function week(param?: Week | Date): string | Nullish {
   let weekParam: Week = {
     date: undefined,
     lang: 'zh',
     abbr: false,
   };
-  if (getType(param) !== 'object') {
-    weekParam.date = param as Time;
-  } else {
+
+  if (getType(param) !== 'date' && getType(param) === 'object') {
     weekParam = {
       ...weekParam,
       ...(param as Week),
     };
+  } else {
+    weekParam.date = param as Date;
   }
   const { date, lang, abbr } = weekParam;
   const weekIndex = date ? new Date(date).getDay() : new Date().getDay();
@@ -38,23 +40,18 @@ export const week = (param?: Week | Time): string | Nullish => {
     return weekIndex > -1 ? weekMapEn[weekIndex].abbr : null;
   }
   return weekIndex > -1 ? weekMapEn[weekIndex].val : null;
-};
+}
 
 /**
  * @desc 格式化日期 默认日期格式为 yyyy-mm-dd HH:MM:SS 如果是unix时间戳, 需要精确到毫秒
  * @param date 日期
  * @param option 选项(可选参数)
  */
-export const dateFormat = (date: Time, option?: string | DateFormatOption): string => {
-  if (!isValidDate(date)) {
+export function dateFormat(date: Date, option?: string | DateFormatOption): string {
+  if (getType(date) !== 'date') {
     throw new Error('dateFormat: date is invalid');
   }
-  const _date =
-    date instanceof Date
-      ? date
-      : typeof date === 'number'
-      ? new Date(date)
-      : new Date(String(date).replaceAll('-', '/'));
+
   let _option = {
     format: 'yyyy-mm-dd HH:MM:SS',
     padZero: true,
@@ -75,12 +72,12 @@ export const dateFormat = (date: Time, option?: string | DateFormatOption): stri
   }
 
   const o = {
-    yyyy: _date.getFullYear(),
-    mm: _option.padZero ? zeroFill(_date.getMonth() + 1) : _date.getMonth() + 1,
-    dd: _option.padZero ? zeroFill(_date.getDate()) : _date.getDate(),
-    HH: _option.padZero ? zeroFill(_date.getHours()) : _date.getHours(),
-    MM: _option.padZero ? zeroFill(_date.getMinutes()) : _date.getMinutes(),
-    SS: _option.padZero ? zeroFill(_date.getSeconds()) : _date.getSeconds(),
+    yyyy: date.getFullYear(),
+    mm: _option.padZero ? zeroFill(date.getMonth() + 1) : date.getMonth() + 1,
+    dd: _option.padZero ? zeroFill(date.getDate()) : date.getDate(),
+    HH: _option.padZero ? zeroFill(date.getHours()) : date.getHours(),
+    MM: _option.padZero ? zeroFill(date.getMinutes()) : date.getMinutes(),
+    SS: _option.padZero ? zeroFill(date.getSeconds()) : date.getSeconds(),
   };
 
   return _option.format
@@ -90,7 +87,7 @@ export const dateFormat = (date: Time, option?: string | DateFormatOption): stri
     .replace(/HH/g, `${o.HH}`)
     .replace(/MM/g, `${o.MM}`)
     .replace(/SS/g, `${o.SS}`);
-};
+}
 
 /**
  * 日期偏移函数。支持年，月，日, 周，时，分，秒，毫秒等格式
@@ -100,7 +97,7 @@ export const dateFormat = (date: Time, option?: string | DateFormatOption): stri
  * @param {TimeUnit} timeUnit - 操作单位.
  * @return {Date}
  */
-export const dateOffset = (date: Date, amount: number, timeUnit: TimeUnit): Date => {
+export function dateOffset(date: Date, amount: number, timeUnit: TimeUnit): Date {
   if (getType(date) !== 'date') {
     throw new Error('dateOffset: date is invalid');
   }
@@ -111,4 +108,41 @@ export const dateOffset = (date: Date, amount: number, timeUnit: TimeUnit): Date
     throw new Error('dateOffset: timeUnit is invalid');
   }
   return new Date(date.getTime() + amount * TimeUintMap[timeUnit]);
-};
+}
+
+/**
+ *  @desc 比较两个日期(Date)是否相等
+ */
+export function dateEqual(a: Date, b: Date): boolean {
+  if (getType(a) !== 'date' || getType(b) !== 'date') {
+    throw new Error('dateEqual: a, b must be Date type');
+  }
+  return a.getTime() === b.getTime();
+}
+
+/**
+ * @desc 返回一组日期数组中最大或最小日期
+ * @param type {'max' | 'min'} 返回类型：最大或最小
+ */
+export function dateMaxMin(dates: Date[], type: 'max' | 'min'): Date {
+  if (dates.some((d) => getType(d) !== 'date')) {
+    throw new Error('dateMax: element in dates must be Date type');
+  }
+  const datesNum = dates.map((d) => d.getTime());
+  const result = type === 'max' ? max(datesNum)! : min(datesNum)!;
+  return new Date(result);
+}
+
+/**
+ * @desc 返回两个时间的差值
+ * @param a Date
+ * @param b Date
+ * @param type {TimeUnit} 差值类型
+ */
+export function dateDiff(a: Date, b: Date, unit: TimeUnit): number {
+  if (getType(a) !== 'date' || getType(b) !== 'date') {
+    throw new Error('dateDiff: a, b must be Date type');
+  }
+  const diff = a.getTime() - b.getTime();
+  return Number((diff / TimeUintMap[unit]).toFixed(4));
+}

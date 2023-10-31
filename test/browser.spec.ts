@@ -58,3 +58,32 @@ describe('parseURLParams test', () => {
     expect(params).toEqual({});
   });
 });
+
+describe('stringifyURLParams', () => {
+  it('converts an object to a query string', () => {
+    const params = {
+      foo: 'bar',
+      baz: 'qux',
+    };
+
+    const queryString = browser.stringifyURLParams(params);
+
+    expect(queryString).toBe('foo=bar&baz=qux');
+  });
+
+  it('handles empty params', () => {
+    const queryString = browser.stringifyURLParams({});
+
+    expect(queryString).toBe('');
+  });
+
+  it('encodes values correctly', () => {
+    const params = {
+      name: 'John Doe',
+    };
+
+    const queryString = browser.stringifyURLParams(params);
+
+    expect(queryString).toBe('name=John+Doe');
+  });
+});

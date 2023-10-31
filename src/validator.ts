@@ -6,7 +6,9 @@ import { getType } from './utils';
  * @param fn function, 判断函数, 默认为Boolean函数
  * @returns boolean
  */
-export const isAllTrue = <T = boolean>(arr: T[], fn = (p: T): boolean => Boolean(p)): boolean => arr.every(fn);
+export function isAllTrue<T = boolean>(arr: T[], fn = (p: T): boolean => Boolean(p)): boolean {
+  return arr.every(fn);
+}
 
 /**
  * @desc 数组中任意一个元素为真值，则返回true
@@ -14,43 +16,49 @@ export const isAllTrue = <T = boolean>(arr: T[], fn = (p: T): boolean => Boolean
  * @param fn function, 判断函数, 默认为Boolean函数
  * @returns boolean
  */
-export const isAnyTrue = <T = boolean>(arr: T[], fn = (p: T): boolean => Boolean(p)): boolean => arr.some(fn);
+export function isAnyTrue<T = boolean>(arr: T[], fn = (p: T): boolean => Boolean(p)): boolean {
+  return arr.some(fn);
+}
 
 /**
  * @desc 判断输入是否为数字或是否可以转换为数字
  * @param value any
  * @returns boolean
  */
-export const isNumberLike = (value: unknown): boolean => !isNaN(Number(value));
+export function isNumberLike(value: unknown): boolean {
+  return !isNaN(Number(value));
+}
 
 /**
  * @desc 判断输入是否为空对象
  */
-export const isEmptyObject = <T>(param: ObjType & T): boolean => {
+export function isEmptyObject<T>(param: ObjType & T): boolean {
   if (getType(param) !== 'object' && getType(param) !== 'array') {
     return false;
   }
   return !Object.keys(param).length;
-};
+}
 
 /**
  * @desc 判断年份是否为闰年
  */
-export const isLeap = (year: number): boolean => {
+export function isLeap(year: number): boolean {
   if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
     return true;
   }
   return false;
-};
+}
 /**
  * @desc 是否为有效日期
  */
-export const isValidDate = (date: any): boolean => !Number.isNaN(new Date(date).valueOf());
+export function isValidDate(date: any): boolean {
+  return !Number.isNaN(new Date(date).valueOf());
+}
 
 /**
  * @desc 是否为质数(素数)
  */
-export const IsPrime = (num: number): boolean => {
+export function IsPrime(num: number): boolean {
   if (!Number.isFinite(num)) {
     throw new Error(`IsPrime: ${num} is not a valid number`);
   }
@@ -64,10 +72,10 @@ export const IsPrime = (num: number): boolean => {
     }
   }
   return true;
-};
+}
 /**
  * @desc 是否为暗色模式
  */
-export const isDarkMode = () => {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches;
-};
+export function isDarkMode(): boolean {
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}

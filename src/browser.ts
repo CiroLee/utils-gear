@@ -3,7 +3,7 @@ import type { PlatformType } from './types';
  * @desc 通过userAgent获取常用平台类型
  * @param ua {String} userAgent
  */
-export const getPlatformType = (ua: string): PlatformType => {
+export function getPlatformType(ua: string): PlatformType {
   const platformMatchers = [
     { type: 'iPhone', regex: /\b(iPhone)\b/i },
     { type: 'iPad', regex: /\b(iPad)\b/i },
@@ -19,12 +19,12 @@ export const getPlatformType = (ua: string): PlatformType => {
     }
   }
   return 'unknown';
-};
+}
 
 /**
  * @desc 将url参数解析为对象
  */
-export const parseURLParams = (url: string): Record<string, string> => {
+export function parseURLParams(url: string): Record<string, string> {
   const _url = new URL(url);
   const params = new URLSearchParams(_url.search);
   const parsedParams: Record<string, string> = {};
@@ -34,17 +34,17 @@ export const parseURLParams = (url: string): Record<string, string> => {
     parsedParams[key] = value;
   }
   return parsedParams;
-};
+}
 
 /**
  * @desc 将对象转换为url参数
  * @param params 需要转换的参数对象
  * @param encode {boolean} 转换结果是否编码，默认不编码
  */
-export const stringifyURLParams = (params: Record<string, string>): string => {
+export function stringifyURLParams(params: Record<string, string>): string {
   const urlParams = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
     urlParams.append(key, value);
   }
   return urlParams.toString();
-};
+}

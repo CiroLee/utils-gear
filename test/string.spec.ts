@@ -35,6 +35,11 @@ describe('whiteSpace test', () => {
     expect(result).toHaveLength(5);
     expect(result.match(/\s/g)).toHaveLength(2);
   });
+  test('whitespace: fill 1 space before the string', () => {
+    const result = `${str.whiteSpace()}123`;
+    expect(result).toHaveLength(4);
+    expect(result.match(/\s/g)).toHaveLength(1);
+  });
 });
 
 describe('string case convert test', () => {

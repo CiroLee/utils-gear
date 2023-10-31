@@ -1,6 +1,5 @@
 import { TimeUintMap } from './constants';
 export type Nullish = null | undefined;
-export type Time = Date | string | number;
 export type ObjType = Record<string | number | symbol, any>;
 export type BaseType = number | string | null | undefined | boolean | symbol;
 export type TimeUnit = keyof typeof TimeUintMap;
@@ -11,9 +10,19 @@ export interface CookieParam {
   domain?: string; // 作用域名
 }
 export interface Week {
-  date: Time | undefined; // 日期
+  date?: Date; // 日期
   lang?: string; // 语言 zh:中文 en: 英文
   abbr?: boolean; // 是否输出简写, 仅英文有效
+}
+
+export interface DateDetail {
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minute: number;
+  second: number;
+  millisecond: number;
 }
 
 export interface DateFormatOption {
