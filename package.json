@@ -1,6 +1,6 @@
 {
   "name": "fe-gear",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Like a gear, tiny and useful frontend function tools written in typescript",
   "browser": "lib/index.mjs",
   "types": "lib/index.d.mts",
