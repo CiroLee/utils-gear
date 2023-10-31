@@ -1,4 +1,4 @@
-# fe-gear
+# utils-gear
 
 > Like a gear, tiny and useful frontend function tools written in typescript
 
@@ -9,17 +9,17 @@
 npm
 
 ```shell
-npm install fe-gear
+npm install utils-gear
 ```
 
 # usage
 
 ```typescript
-import { getType } from 'fe-gear';
+import { getType } from 'utils-gear';
 const res = getType(Symbol(1));
 console.log(res); // 'symbol'
 ```
 
 # api
 
-[api doc (Chinese Simplified)](https://github.com/CiroLee/fe-gear/blob/main/docs/README.md)
+[api doc (Chinese Simplified)](https://github.com/CiroLee/utils-gear/blob/main/docs/README.md)
