@@ -18,18 +18,20 @@
   },
   "keywords": [
     "utils",
-    "fe-gear"
+    "frontend",
+    "gear",
+    "utils-gear"
   ],
-  "homepage": "https://github.com/CiroLee/fe-gear",
+  "homepage": "https://github.com/CiroLee/utils-gear",
   "bugs": {
-    "url": "https://github.com/CiroLee/fe-gear/issues"
+    "url": "https://github.com/CiroLee/utils-gear/issues"
   },
   "files": [
     "lib"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/CiroLee/fe-gear.git"
+    "url": "https://github.com/CiroLee/utils-gear.git"
   },
   "author": "cirolee<ciromail@126.com>",
   "license": "MIT",
