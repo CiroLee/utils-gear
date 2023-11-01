@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as p,Q as n}from"./chunks/framework.edbfdbf1.js";const F=JSON.parse('{"title":"browser","description":"","frontmatter":{},"headers":[],"relativePath":"api/browser.md","filePath":"api/browser.md"}'),l={name:"api/browser.md"},o=n("",20),e=[o];function t(r,c,y,E,i,d){return a(),p("div",null,e)}const m=s(l,[["render",t]]);export{F as __pageData,m as default};
