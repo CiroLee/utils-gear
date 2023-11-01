@@ -83,7 +83,7 @@ export function replaceAt(str: string, index: number, char: string): string {
 /**
  * @desc 去除字符串中的空格
  * @param str 目标字符串
- * @param option 'start' | 'end' | 'middle' | 'all', 默认为all, 去除所有空格
+ * @param option 'start' | 'end' | 'both' | 'all', 默认为all, 去除所有空格
  * @returns string
  */
 export function removeSpaces(str: string, option: SpaceOption = 'all') {

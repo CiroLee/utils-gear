@@ -151,7 +151,7 @@ deleteAt('footbar', 3); // foobar
 signature:
 
 ```typescript
-function removeSpace(str: string, option: 'start' | 'end' | 'both' | 'all' = 'all'): string;
+function removeSpaces(str: string, option: 'start' | 'end' | 'both' | 'all' = 'all'): string;
 ```
 
 example:
