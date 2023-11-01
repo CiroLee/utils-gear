@@ -22,4 +22,4 @@ console.log(res); // 'symbol'
 
 # api
 
-[api doc (Chinese Simplified)](https://github.com/CiroLee/utils-gear/blob/main/docs/README.md)
+[documents](https://cirolee.github.io/utils-gear/)

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'utils-gear',
+  base: '/utils-gear/',
   description: 'Like a gear, tiny and useful frontend function utils written in typescript',
   themeConfig: {
     socialLinks: [{ icon: 'github', link: 'https://github.com/CiroLee/utils-gear' }],
