@@ -48,12 +48,6 @@ export function isLeap(year: number): boolean {
   }
   return false;
 }
-/**
- * @desc 是否为有效日期
- */
-export function isValidDate(date: any): boolean {
-  return !Number.isNaN(new Date(date).valueOf());
-}
 
 /**
  * @desc 是否为质数(素数)
@@ -72,10 +66,4 @@ export function IsPrime(num: number): boolean {
     }
   }
   return true;
-}
-/**
- * @desc 是否为暗色模式
- */
-export function isDarkMode(): boolean {
-  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 }

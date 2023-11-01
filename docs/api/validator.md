@@ -82,24 +82,6 @@ isEmptyObject([]); // true
 isEmptyObject(null); // false
 ```
 
-## isValidDate
-
-验证是否为有效日期
-
-signature:
-
-```typescript
-function isValidDate(date: any): boolean;
-```
-
-example:
-
-```typescript
-isValidDate('2022 12 12'); // true
-isValidDate('2022-12-12 T12:12:00'); // false
-isValidDate({}); // false
-```
-
 ## isPrime
 
 验证是否为质数(素数)

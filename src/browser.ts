@@ -48,3 +48,10 @@ export function stringifyURLParams(params: ObjType): string {
   }
   return urlParams.toString();
 }
+
+/**
+ * @desc 是否为暗色模式
+ */
+export function isDarkMode(): boolean {
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}

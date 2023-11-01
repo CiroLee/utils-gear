@@ -57,3 +57,18 @@ const params = {
 };
 stringifyURLParams(params); // 'param1=value1&param2=value2'
 ```
+
+## isDarkMode
+
+判断浏览器当前是否为深色模式  
+signature:
+
+```typescript
+function isDarkMode(): boolean;
+```
+
+example:
+
+```typescript
+isDarkMode(); // true
+```

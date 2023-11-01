@@ -87,3 +87,23 @@ describe('stringifyURLParams', () => {
     expect(queryString).toBe('name=John+Doe');
   });
 });
+
+describe('isDarkMode', () => {
+  test('should return true when prefers-color-scheme is dark', () => {
+    // Mock window.matchMedia to simulate dark mode
+    window.matchMedia = jest.fn().mockImplementation((query) => ({
+      matches: query === '(prefers-color-scheme: dark)',
+    }));
+
+    expect(browser.isDarkMode()).toBe(true);
+  });
+
+  test('should return false when prefers-color-scheme is not dark', () => {
+    // Mock window.matchMedia to simulate light mode
+    window.matchMedia = jest.fn().mockImplementation((query) => ({
+      matches: query === '(prefers-color-scheme: light)',
+    }));
+
+    expect(browser.isDarkMode()).toBe(false);
+  });
+});

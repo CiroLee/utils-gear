@@ -146,3 +146,10 @@ export function dateDiff(a: Date, b: Date, unit: TimeUnit): number {
   const diff = a.getTime() - b.getTime();
   return Number((diff / TimeUintMap[unit]).toFixed(4));
 }
+
+/**
+ * @desc 是否为有效日期
+ */
+export function isValidDate(date: any): boolean {
+  return !Number.isNaN(new Date(date).valueOf());
+}

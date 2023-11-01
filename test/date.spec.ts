@@ -191,3 +191,19 @@ describe('dateDiff', () => {
     expect(() => date.dateDiff(d1, '2021-11-31 22:12:12' as unknown as Date, 'day')).toThrowError();
   });
 });
+
+describe('isValidDate test', () => {
+  test('ISVALIDDATE: assert the input is valid date', () => {
+    const d1 = '2022年12月12日';
+    const d2 = '2022 12 12';
+    const d3 = '2022-12-12T12:12:00';
+    const d4 = '2022-12-12 T12:12:00';
+    const d5 = {};
+
+    expect(date.isValidDate(d1)).toBeFalsy();
+    expect(date.isValidDate(d2)).toBeTruthy();
+    expect(date.isValidDate(d3)).toBeTruthy();
+    expect(date.isValidDate(d4)).toBeFalsy();
+    expect(date.isValidDate(d5)).toBeFalsy();
+  });
+});

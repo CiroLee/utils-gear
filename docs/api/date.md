@@ -4,7 +4,7 @@
 
 ## week
 
-获取星期数，默认返回中文日期；如果需要返回英文日期或英文简写日期
+获取星期数，默认返回中文日期, 如果需要返回英文日期或英文简写日期, 请按照`Week`传入参数
 
 signature:
 
@@ -39,7 +39,8 @@ week({
 
 ## dateFormat
 
-日期格式化。默认格式为: yyyy-mm-dd HH:MM:SS。option 为 string 类型时，表示格式字符串。需要设置日期是否自动补零，使用 DateFormatOption 类型  
+日期格式化。默认格式为: yyyy-mm-dd HH:MM:SS。option 为 string 类型时，表示格式字符串。需要设置日期是否自动补零，使用`DateFormatOption`类型
+
 signature:
 
 ```typescript
@@ -137,4 +138,22 @@ const d1 = new Date('2023-12-01 12:00:00');
 const d2 = new Date('2021-12-01 12:00:00');
 dateDiff(d1, d2, 'year'); // 2
 dateDiff(d1, d2, 'hour'); // 17520
+```
+
+## isValidDate
+
+验证是否为有效日期
+
+signature:
+
+```typescript
+function isValidDate(date: any): boolean;
+```
+
+example:
+
+```typescript
+isValidDate('2022 12 12'); // true
+isValidDate('2022-12-12 T12:12:00'); // false
+isValidDate({}); // false
 ```

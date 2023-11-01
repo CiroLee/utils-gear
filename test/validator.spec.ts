@@ -71,21 +71,6 @@ describe('isLeap test', () => {
   });
 });
 
-describe('isValidDate test', () => {
-  test('ISVALIDDATE: assert the input is valid date', () => {
-    const d1 = '2022年12月12日';
-    const d2 = '2022 12 12';
-    const d3 = '2022-12-12T12:12:00';
-    const d4 = '2022-12-12 T12:12:00';
-    const d5 = {};
-
-    expect(validator.isValidDate(d1)).toBeFalsy();
-    expect(validator.isValidDate(d2)).toBeTruthy();
-    expect(validator.isValidDate(d3)).toBeTruthy();
-    expect(validator.isValidDate(d4)).toBeFalsy();
-    expect(validator.isValidDate(d5)).toBeFalsy();
-  });
-});
 describe('IsPrime test', () => {
   test('ISPRIME: num is integer', () => {
     const result = validator.IsPrime(23);
@@ -106,25 +91,5 @@ describe('IsPrime test', () => {
       const result = validator.IsPrime(n);
       expect(result).toBeFalsy();
     });
-  });
-});
-
-describe('isDarkMode', () => {
-  test('should return true when prefers-color-scheme is dark', () => {
-    // Mock window.matchMedia to simulate dark mode
-    window.matchMedia = jest.fn().mockImplementation((query) => ({
-      matches: query === '(prefers-color-scheme: dark)',
-    }));
-
-    expect(validator.isDarkMode()).toBe(true);
-  });
-
-  test('should return false when prefers-color-scheme is not dark', () => {
-    // Mock window.matchMedia to simulate light mode
-    window.matchMedia = jest.fn().mockImplementation((query) => ({
-      matches: query === '(prefers-color-scheme: light)',
-    }));
-
-    expect(validator.isDarkMode()).toBe(false);
   });
 });
