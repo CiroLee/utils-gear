@@ -18,7 +18,7 @@ example:
 getType(1); // 'number'
 getType('1'); // 'string'
 getType({}); // 'object'
-getType(() =null); // 'function'
+getType(() => null); // 'function'
 getType(null); // 'null'
 ```
 
@@ -60,7 +60,7 @@ example:
 ```typescript
 $('input').addEventListener(
   'input',
-  debounce((event) ={
+  debounce((event) => {
     console.log(event.target.value);
   }, 250),
 );

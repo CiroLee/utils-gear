@@ -66,7 +66,7 @@ const obj = {
   age: 10,
   sex: 'male',
 };
-pickBy(obj, (el = typeof el === 'string')); // { name: 'Tom', sex: 'male' };
+pickBy(obj, (el) => typeof el === 'string'); // { name: 'Tom', sex: 'male' };
 ```
 
 ## omitBy
@@ -87,7 +87,7 @@ const obj = {
   age: 10,
   sex: 'male',
 };
-omitBy(obj, (el = typeof el === 'string')); // { age: 10 }
+omitBy(obj, (el) => typeof el === 'string'); // { age: 10 }
 ```
 
 ## objectTrueValue
