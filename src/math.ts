@@ -17,20 +17,26 @@ export function zeroFill(num: number | string): string {
 
 /**
  * @desc 计算数组中的最大值
- * @param array (string | number)[] 待计算的数组
+ * @param array {number[]} 待计算的数组
  */
-export function max(array: (string | number)[]): number | undefined {
-  const isValidParam = isAllTrue(array, (v) => isNumberLike(v));
-  return isValidParam ? Math.max(...(array as number[])) : undefined;
+export function max(array: number[]): number {
+  const isValidParam = isAllTrue(array, (v) => typeof v === 'number');
+  if (!isValidParam) {
+    throw new Error('max: element in array must be number');
+  }
+  return Math.max(...array);
 }
 
 /**
  * @desc 计算数组中的最小值
- * @param array (string | number)[] 待计算的数组
+ * @param array {number[]} 待计算的数组
  */
-export function min(array: (string | number)[]): number | undefined {
-  const isValidParam = isAllTrue(array, (v) => isNumberLike(v));
-  return isValidParam ? Math.min(...(array as number[])) : undefined;
+export function min(array: number[]): number {
+  const isValidParam = isAllTrue(array, (v) => typeof v === 'number');
+  if (!isValidParam) {
+    throw new Error('max: element in array must be number');
+  }
+  return Math.min(...array);
 }
 /**
  * @desc  计算两个基本数据类型数组的交集

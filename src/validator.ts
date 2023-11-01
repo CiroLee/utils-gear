@@ -32,7 +32,7 @@ export function isNumberLike(value: unknown): boolean {
 /**
  * @desc 判断输入是否为空对象
  */
-export function isEmptyObject<T>(param: ObjType & T): boolean {
+export function isEmptyObject(param: ObjType): boolean {
   if (getType(param) !== 'object' && getType(param) !== 'array') {
     return false;
   }

@@ -40,17 +40,9 @@ describe('max test', () => {
     const param = [1, 2, 3];
     expect(math.max(param)).toBe(3);
   });
-  test('MAX: input is a number-like string array', () => {
+  test('MAX: input is a string array', () => {
     const param = ['1', '2', '3'];
-    expect(math.max(param)).toBe(3);
-  });
-  test('MAX: input includes number and number-like string', () => {
-    const param = [1, 2, '3'];
-    expect(math.max(param)).toBe(3);
-  });
-  test('MAX: input input is invalid', () => {
-    const param = ['a', 1];
-    expect(math.max(param)).toBeUndefined();
+    expect(() => math.max(param as unknown as number[])).toThrowError();
   });
 });
 
@@ -61,15 +53,7 @@ describe('min test', () => {
   });
   test('MIN: input is a number-like string array', () => {
     const param = ['1', '2', '3'];
-    expect(math.min(param)).toBe(1);
-  });
-  test('MIN: input includes number and number-like string', () => {
-    const param = [1, 2, '3'];
-    expect(math.min(param)).toBe(1);
-  });
-  test('MIN: input input is invalid', () => {
-    const param = ['a', 1];
-    expect(math.min(param)).toBeUndefined();
+    expect(() => math.min(param as unknown as number[])).toThrowError();
   });
 });
 

@@ -1,6 +1,6 @@
 {
   "name": "utils-gear",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Like a gear, tiny and useful frontend function tools written in typescript",
   "browser": "lib/index.mjs",
   "types": "lib/index.d.mts",
@@ -8,6 +8,9 @@
     "prepare": "husky install",
     "build": "tsup",
     "dev": "tsup --watch",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
     "lint:fix": "npx eslint src/**/*.ts --config .eslintrc.js --fix",
     "test:unit": "jest --coverage"
   },
@@ -50,6 +53,7 @@
     "prettier": "^3.0.3",
     "ts-jest": "^29.1.1",
     "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitepress": "1.0.0-rc.24"
   }
 }

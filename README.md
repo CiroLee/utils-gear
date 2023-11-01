@@ -1,6 +1,6 @@
 # utils-gear
 
-> Like a gear, tiny and useful frontend function tools written in typescript
+Like a gear, tiny and useful frontend function tools written in typescript
 
 [![codecov](https://codecov.io/gh/cirolee/utils-gear/branch/main/graph/badge.svg)](https://codecov.io/gh/cirolee/utils-gear/branch/main) ![npm bundle size](https://img.shields.io/bundlephobia/min/utils-gear) ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/cirolee/utils-gear) ![GitHub](https://img.shields.io/github/license/cirolee/utils-gear)
 

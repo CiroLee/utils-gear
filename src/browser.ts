@@ -1,4 +1,4 @@
-import type { PlatformType } from './types';
+import type { ObjType, PlatformType } from './types';
 /**
  * @desc 通过userAgent获取常用平台类型
  * @param ua {String} userAgent
@@ -24,10 +24,10 @@ export function getPlatformType(ua: string): PlatformType {
 /**
  * @desc 将url参数解析为对象
  */
-export function parseURLParams(url: string): Record<string, string> {
+export function parseURLParams(url: string): ObjType {
   const _url = new URL(url);
   const params = new URLSearchParams(_url.search);
-  const parsedParams: Record<string, string> = {};
+  const parsedParams: ObjType = {};
 
   for (const param of params.entries()) {
     const [key, value] = param;
@@ -41,7 +41,7 @@ export function parseURLParams(url: string): Record<string, string> {
  * @param params 需要转换的参数对象
  * @param encode {boolean} 转换结果是否编码，默认不编码
  */
-export function stringifyURLParams(params: Record<string, string>): string {
+export function stringifyURLParams(params: ObjType): string {
   const urlParams = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
     urlParams.append(key, value);

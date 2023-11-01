@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { CookieParam, ObjType, Nullish } from '@src/types';
 import { ONE_HOUR } from './constants';
 
@@ -6,7 +7,9 @@ export class Cookie {
    * @desc 获取cookie
    * @param name string[可选] cookie名称，
    */
-  static get(name?: string): string | object | Nullish {
+  static get(): ObjType | Nullish;
+  static get(name: string): string | Nullish;
+  static get(name?: string): string | ObjType | Nullish {
     if (!document.cookie.length) return null;
     const storage = document.cookie.replace(/\s*/g, '').split(';');
     const cookieValues: ObjType = {};
@@ -28,7 +31,7 @@ export class Cookie {
     document.cookie = `${name}=${encodeURI(value)}${expires}${setDomian}`;
   }
   /**
-   * @desc 删除cookie, 省略name则删除所有cookied
+   * @desc 删除cookie, 省略name则删除所有cookie
    */
   static delete(name?: string): void {
     if (name) {
@@ -36,7 +39,7 @@ export class Cookie {
     } else {
       const cookies = this.get();
       cookies &&
-        Object.keys(cookies).forEach(name => {
+        Object.keys(cookies).forEach((name) => {
           this.set({ name, value: '', expireHour: 0 });
         });
     }

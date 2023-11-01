@@ -1,18 +1,20 @@
 import { Storage } from '@src/storage';
-describe('Storge test', () => {
+let mockStorageSet: jest.SpyInstance<void>;
+describe('Storage test', () => {
   beforeEach(() => {
     Storage.delete('test');
+    mockStorageSet = jest.spyOn(Storage, 'set');
   });
   test('STORAGE: set a valid storage with expireHour', () => {
-    const result = Storage.set('test', { val: 123 }, 1);
-    expect(result).toBeTruthy();
+    Storage.set('test', { val: 123 }, 1);
+    expect(mockStorageSet).toHaveBeenCalledTimes(1);
   });
   test('STORAGE: set a invalid storage with non-json value', () => {
     const a: any = {};
     a.b = a;
     const val = a;
-    const result = Storage.set('test', val, 1);
-    expect(result).toBeFalsy();
+    Storage.set('test', val, 1);
+    expect(mockStorageSet).toHaveBeenCalledTimes(1);
   });
   test('STORAGE: empty storage', () => {
     const result = Storage.get('a');

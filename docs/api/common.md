@@ -1,22 +1,38 @@
-## common
+# common
 
-> 通用函数
+通用工具函数
 
-### getType(v?: any): string
+## getType
 
-> 获取参数的类型
+获取参数类型
+
+signature:
+
+```typescript
+function getType(v?: any): string;
+```
+
+example:
 
 ```typescript
 getType(1); // 'number'
 getType('1'); // 'string'
 getType({}); // 'object'
-getType(() => null); // 'function'
+getType(() =null); // 'function'
 getType(null); // 'null'
 ```
 
-### throttle(fn: Function, wait = 300) Function
+## throttle
 
-> 节流函数
+节流函数
+
+signature:
+
+```typescript
+function throttle(fn: Function, wait = 300): Function;
+```
+
+example:
 
 ```typescript
 window.addEventListener(
@@ -29,14 +45,22 @@ window.addEventListener(
 // 最多每 250 毫秒记录一次窗口尺寸
 ```
 
-### debounce(fn: Function, delay = 300): Function
+## debounce
 
-> 防抖函数
+防抖函数
+
+signature:
+
+```typescript
+function debounce(fn: Function, delay = 300): Function;
+```
+
+example:
 
 ```typescript
 $('input').addEventListener(
   'input',
-  debounce((event) => {
+  debounce((event) ={
     console.log(event.target.value);
   }, 250),
 );

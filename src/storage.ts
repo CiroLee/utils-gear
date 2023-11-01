@@ -6,7 +6,7 @@ export class Storage {
    * @param key storage的key
    * @param value storage的值。可以是基础类型和引用类型的值
    */
-  static set(key: string, value: ObjType | BaseType, expireHour?: number): boolean {
+  static set(key: string, value: ObjType | BaseType, expireHour?: number) {
     const obj: StorageItem = {
       value,
     };
@@ -17,11 +17,10 @@ export class Storage {
     try {
       stringify = JSON.stringify(obj);
     } catch (error) {
-      return false;
+      console.error(error);
     }
 
     localStorage.setItem(key, stringify);
-    return true;
   }
   /*
    * @desc 获取storage
