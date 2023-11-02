@@ -1,5 +1,7 @@
 # Color
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/color.ts)
+
 颜色相关函数。包含颜色转换，深色判断等函数
 
 ## randomHex

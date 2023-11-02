@@ -1,5 +1,7 @@
 # Cookie
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/cookie.ts)
+
 常用的 cookie 操作静态类封装, set, get, delete 方法均为静态方法
 
 ## Cookie.get

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import type { Nullish, Week, DateFormatOption, TimeUnit, DateDetail } from '@src/types';
+import type { Nullish, Week, DateFormatOption, TimeUnit, DateObject } from '@src/types';
 import { getType } from './utils';
 import { max, min, zeroFill } from './math';
 import { isAllTrue } from './validator';
@@ -146,7 +146,64 @@ export function dateDiff(a: Date, b: Date, unit: TimeUnit): number {
   const diff = a.getTime() - b.getTime();
   return Number((diff / TimeUintMap[unit]).toFixed(4));
 }
+/**
+ * @desc 计算指定日期月份的天数
+ * @param date {Date} 日期参数
+ */
+export function daysInMonth(date: Date): number {
+  if (getType(date) !== 'date') {
+    throw new Error('daysInMonth: date must be Date type');
+  }
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  return new Date(year, month, 0).getDate();
+}
+/**
+ * @desc 将日期转换为对象
+ * @param date {Date} 日期
+ */
+export function dateToObject(date: Date): DateObject {
+  if (getType(date) !== 'date') {
+    throw new Error('dateToJSON: date must be Date type');
+  }
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const week = date.getDay();
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
+  const millisecond = date.getMilliseconds();
 
+  return { year, month, day, week, hour, minute, second, millisecond };
+}
+/**
+ * @desc 返回指定日期是本年的第几周
+ * @param date: {Date} 日期
+ */
+export function weekOfYear(date: Date): number {
+  if (getType(date) !== 'date') {
+    throw new Error('weekOfYear: date must be Date type');
+  }
+  const year = date.getFullYear();
+  const first = new Date(year, 0, 1);
+  const duration = (date.getTime() - first.getTime()) / TimeUintMap.day;
+  return Math.ceil(duration / 7);
+}
+/**
+ * @desc 返回指定日期是本月的第几周
+ * @param date: {Date} 日期
+ */
+export function weekOfMonth(date: Date): number {
+  if (getType(date) !== 'date') {
+    throw new Error('weekOfMonth: date must be Date type');
+  }
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const first = new Date(year, month, 1);
+  const duration = (date.getTime() - first.getTime()) / TimeUintMap.day;
+  return Math.ceil(duration / 7);
+}
 /**
  * @desc 是否为有效日期
  */

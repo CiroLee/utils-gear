@@ -15,9 +15,10 @@ export interface Week {
   abbr?: boolean; // 是否输出简写, 仅英文有效
 }
 
-export interface DateDetail {
+export interface DateObject {
   year: number;
   month: number;
+  week: number;
   day: number;
   hour: number;
   minute: number;

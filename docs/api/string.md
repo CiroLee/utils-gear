@@ -1,5 +1,7 @@
 # string
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/string.ts)
+
 常用 string 处理函数
 
 ## encryptedPhone

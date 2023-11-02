@@ -207,3 +207,47 @@ describe('isValidDate test', () => {
     expect(date.isValidDate(d5)).toBeFalsy();
   });
 });
+
+describe('dateToObject', () => {
+  it('invalid date, should throw error', () => {
+    const dateParam = '2023-11-01:12:00:00';
+    expect(() => date.dateToObject(dateParam as unknown as Date)).toThrowError();
+  });
+  it('valid date, should return date object correctly', () => {
+    const result = date.dateToObject(mockDate);
+    expect(result.year).toBe(2022);
+  });
+});
+
+describe('daysInMonth', () => {
+  it('invalid date, should throw error', () => {
+    const dateParam = '2023-11-01:12:00:00';
+    expect(() => date.daysInMonth(dateParam as unknown as Date)).toThrowError();
+  });
+  it('should return days correctly', () => {
+    const result = date.daysInMonth(mockDate);
+    expect(result).toBe(31);
+  });
+});
+
+describe('weekOfYear', () => {
+  it('invalid date, should throw error', () => {
+    const dateParam = '2023-11-01:12:00:00';
+    expect(() => date.weekOfYear(dateParam as unknown as Date)).toThrowError();
+  });
+  it('should return week correctly', () => {
+    const result = date.weekOfYear(mockDate);
+    expect(result).toBe(3);
+  });
+});
+
+describe('weekOfMonth', () => {
+  it('invalid date, should throw error', () => {
+    const dateParam = '2023-11-01:12:00:00';
+    expect(() => date.weekOfMonth(dateParam as unknown as Date)).toThrowError();
+  });
+  it('should return week correctly', () => {
+    const result = date.weekOfMonth(mockDate);
+    expect(result).toBe(3);
+  });
+});

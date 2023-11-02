@@ -1,5 +1,7 @@
 # date
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/date.ts)
+
 常用日期处理函数
 
 ## week
@@ -156,4 +158,88 @@ example:
 isValidDate('2022 12 12'); // true
 isValidDate('2022-12-12 T12:12:00'); // false
 isValidDate({}); // false
+```
+
+## daysInMonth
+
+获取指定月份的天数  
+signature:
+
+```typescript
+function daysInMonth(date: Date): number;
+```
+
+example:
+
+```typescript
+daysInMonth(new Date('2023-11-01')); // 30
+```
+
+## weekOfYear
+
+获取指定日期是本年的第几周  
+signature:
+
+```typescript
+function weekOfYear(date: Date): number;
+```
+
+example:
+
+```typescript
+weekOfYear(new Date('2023-11-30')); // 48
+```
+
+## weekOfMonth
+
+获取指定日期是本月第几周  
+signature:
+
+```typescript
+function weekOfMonth(date: Date): number;
+```
+
+example:
+
+```typescript
+weekOfMonth(new Date('2023-11-30')); // 5
+```
+
+## dateToObject
+
+将日期转换为对象  
+signature:
+
+```typescript
+function dateToObject(date: Date): DateObject;
+```
+
+```typescript
+interface DateObject {
+  year: number;
+  month: number;
+  week: number;
+  day: number;
+  hour: number;
+  minute: number;
+  second: number;
+  millisecond: number;
+}
+```
+
+example:
+
+```typescript
+dateToObject(new Date('2023-11-30 12:30:00'));
+// output
+{
+  year: 2023,
+  month: 10,
+  day: 30,
+  week: 4,
+  hour: 12,
+  minute: 30,
+  second: 0,
+  millisecond: 0
+}
 ```

@@ -1,5 +1,7 @@
 # validator
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/validator.ts)
+
 常用验证函数
 
 ## isAnyTrue

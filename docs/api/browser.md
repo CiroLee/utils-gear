@@ -1,5 +1,7 @@
 # browser
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/browser.ts)
+
 浏览器相关函数
 
 ## getPlatformType
