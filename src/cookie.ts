@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { CookieParam, ObjType, Nullish } from '@src/types';
-import { ONE_HOUR } from './constants';
+import { TimeUintMap } from './constants';
 
 export class Cookie {
   /**
@@ -24,7 +24,7 @@ export class Cookie {
    */
   static set({ name, value, expireHour = 1, domain }: CookieParam): void {
     const date = new Date();
-    date.setTime(date.getTime() + expireHour * ONE_HOUR);
+    date.setTime(date.getTime() + expireHour * TimeUintMap.hour);
     const expires = `;expires=${date.toUTCString()}`;
     const setDomian = domain ? `;domain=${domain}` : '';
 

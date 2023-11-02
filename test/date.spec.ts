@@ -251,3 +251,21 @@ describe('weekOfMonth', () => {
     expect(result).toBe(3);
   });
 });
+
+describe('toDate', () => {
+  it('string type, should convert to Date correctly', () => {
+    const param = '2022-1-18 12:12:12';
+    const result = date.toDate(param);
+    expect(date.dateEqual(mockDate, result)).toBeTruthy();
+  });
+  it('unix timestamp, should convert to Date correctly', () => {
+    const result = date.toDate(mockTimestamp * 1000);
+    expect(date.dateEqual(mockDate, result)).toBeTruthy();
+  });
+  it('invalid date(e.g:{}), should throw error', () => {
+    expect(() => date.toDate({} as any)).toThrowError();
+  });
+  it('invalid date(e.g:""), should throw error', () => {
+    expect(() => date.toDate('' as any)).toThrowError();
+  });
+});

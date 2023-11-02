@@ -1,5 +1,3 @@
-export const ONE_HOUR = 60 * 60 * 1000;
-
 export const TimeUintMap = {
   millisecond: 1,
   second: 1000,

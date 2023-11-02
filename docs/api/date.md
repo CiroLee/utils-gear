@@ -243,3 +243,18 @@ dateToObject(new Date('2023-11-30 12:30:00'));
   millisecond: 0
 }
 ```
+
+## toDate
+
+将string或number格式的日期转安全地换为Date类型  
+signature:
+
+```typescript
+function toDate(date: string | number): Date;
+```
+
+example:
+
+```typescript
+toDate('2023-11-30 12:30:00'); // 2023-11-30T012:30:00.000Z
+```
