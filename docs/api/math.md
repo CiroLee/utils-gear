@@ -1,5 +1,7 @@
 # math
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/math.ts)
+
 常用数学相关函数
 
 ## zeroFill

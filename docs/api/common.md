@@ -1,5 +1,7 @@
 # common
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/utils.ts)
+
 通用工具函数
 
 ## getType

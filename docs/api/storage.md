@@ -1,5 +1,7 @@
 # Storage
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/storage.ts)
+
 localStorage类cookie操作封装，支持设置过期时间， set, get, delete方法均为静态方法
 
 ## Storage.set

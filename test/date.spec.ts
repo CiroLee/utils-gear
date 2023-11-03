@@ -207,3 +207,65 @@ describe('isValidDate test', () => {
     expect(date.isValidDate(d5)).toBeFalsy();
   });
 });
+
+describe('dateToObject', () => {
+  it('invalid date, should throw error', () => {
+    const dateParam = '2023-11-01:12:00:00';
+    expect(() => date.dateToObject(dateParam as unknown as Date)).toThrowError();
+  });
+  it('valid date, should return date object correctly', () => {
+    const result = date.dateToObject(mockDate);
+    expect(result.year).toBe(2022);
+  });
+});
+
+describe('daysInMonth', () => {
+  it('invalid date, should throw error', () => {
+    const dateParam = '2023-11-01:12:00:00';
+    expect(() => date.daysInMonth(dateParam as unknown as Date)).toThrowError();
+  });
+  it('should return days correctly', () => {
+    const result = date.daysInMonth(mockDate);
+    expect(result).toBe(31);
+  });
+});
+
+describe('weekOfYear', () => {
+  it('invalid date, should throw error', () => {
+    const dateParam = '2023-11-01:12:00:00';
+    expect(() => date.weekOfYear(dateParam as unknown as Date)).toThrowError();
+  });
+  it('should return week correctly', () => {
+    const result = date.weekOfYear(mockDate);
+    expect(result).toBe(3);
+  });
+});
+
+describe('weekOfMonth', () => {
+  it('invalid date, should throw error', () => {
+    const dateParam = '2023-11-01:12:00:00';
+    expect(() => date.weekOfMonth(dateParam as unknown as Date)).toThrowError();
+  });
+  it('should return week correctly', () => {
+    const result = date.weekOfMonth(mockDate);
+    expect(result).toBe(3);
+  });
+});
+
+describe('toDate', () => {
+  it('string type, should convert to Date correctly', () => {
+    const param = '2022-1-18 12:12:12';
+    const result = date.toDate(param);
+    expect(date.dateEqual(mockDate, result)).toBeTruthy();
+  });
+  it('unix timestamp, should convert to Date correctly', () => {
+    const result = date.toDate(mockTimestamp * 1000);
+    expect(date.dateEqual(mockDate, result)).toBeTruthy();
+  });
+  it('invalid date(e.g:{}), should throw error', () => {
+    expect(() => date.toDate({} as any)).toThrowError();
+  });
+  it('invalid date(e.g:""), should throw error', () => {
+    expect(() => date.toDate('' as any)).toThrowError();
+  });
+});

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import type { Nullish, Week, DateFormatOption, TimeUnit, DateDetail } from '@src/types';
+import type { Nullish, Week, DateFormatOption, TimeUnit, DateObject } from '@src/types';
 import { getType } from './utils';
 import { max, min, zeroFill } from './math';
 import { isAllTrue } from './validator';
@@ -16,6 +16,7 @@ const weekMapEn = [
 ];
 /**
  * @desc 返回指定日期的星期数, 如果未传入参数, 默认返回当天日期的中文星期数
+ * @param param {Week | Date} 日期
  */
 export function week(param?: Week | Date): string | Nullish {
   let weekParam: Week = {
@@ -44,8 +45,8 @@ export function week(param?: Week | Date): string | Nullish {
 
 /**
  * @desc 格式化日期 默认日期格式为 yyyy-mm-dd HH:MM:SS 如果是unix时间戳, 需要精确到毫秒
- * @param date 日期
- * @param option 选项(可选参数)
+ * @param date {Date} 日期
+ * @param option {string | DateFormatOption} 选项
  */
 export function dateFormat(date: Date, option?: string | DateFormatOption): string {
   if (getType(date) !== 'date') {
@@ -91,11 +92,9 @@ export function dateFormat(date: Date, option?: string | DateFormatOption): stri
 
 /**
  * 日期偏移函数。支持年，月，日, 周，时，分，秒，毫秒等格式
- *
- * @param {Date} date - 初始日期
- * @param {number} amount - 操作值，整数为加，负数为减
- * @param {TimeUnit} timeUnit - 操作单位.
- * @return {Date}
+ * @param date {Date}  初始日期
+ * @param amount {number} 操作值，整数为加，负数为减
+ * @param timeUnit {TimeUnit} - 操作单位
  */
 export function dateOffset(date: Date, amount: number, timeUnit: TimeUnit): Date {
   if (getType(date) !== 'date') {
@@ -111,7 +110,9 @@ export function dateOffset(date: Date, amount: number, timeUnit: TimeUnit): Date
 }
 
 /**
- *  @desc 比较两个日期(Date)是否相等
+ * @desc 比较两个日期(Date)是否相等
+ * @param a {Date}
+ * @param b {Date}
  */
 export function dateEqual(a: Date, b: Date): boolean {
   if (getType(a) !== 'date' || getType(b) !== 'date') {
@@ -146,10 +147,81 @@ export function dateDiff(a: Date, b: Date, unit: TimeUnit): number {
   const diff = a.getTime() - b.getTime();
   return Number((diff / TimeUintMap[unit]).toFixed(4));
 }
+/**
+ * @desc 计算指定日期月份的天数
+ * @param date {Date} 日期参数
+ */
+export function daysInMonth(date: Date): number {
+  if (getType(date) !== 'date') {
+    throw new Error('daysInMonth: date must be Date type');
+  }
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  return new Date(year, month, 0).getDate();
+}
+/**
+ * @desc 将日期转换为对象
+ * @param date {Date} 日期
+ */
+export function dateToObject(date: Date): DateObject {
+  if (getType(date) !== 'date') {
+    throw new Error('dateToJSON: date must be Date type');
+  }
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const week = date.getDay();
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
+  const millisecond = date.getMilliseconds();
 
+  return { year, month, day, week, hour, minute, second, millisecond };
+}
+/**
+ * @desc 返回指定日期是本年的第几周
+ * @param date: {Date} 日期
+ */
+export function weekOfYear(date: Date): number {
+  if (getType(date) !== 'date') {
+    throw new Error('weekOfYear: date must be Date type');
+  }
+  const year = date.getFullYear();
+  const first = new Date(year, 0, 1);
+  const duration = (date.getTime() - first.getTime()) / TimeUintMap.day;
+  return Math.ceil(duration / 7);
+}
+/**
+ * @desc 返回指定日期是本月的第几周
+ * @param date {Date} 日期
+ */
+export function weekOfMonth(date: Date): number {
+  if (getType(date) !== 'date') {
+    throw new Error('weekOfMonth: date must be Date type');
+  }
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const first = new Date(year, month, 1);
+  const duration = (date.getTime() - first.getTime()) / TimeUintMap.day;
+  return Math.ceil(duration / 7);
+}
 /**
  * @desc 是否为有效日期
  */
 export function isValidDate(date: any): boolean {
   return !Number.isNaN(new Date(date).valueOf());
+}
+
+/**
+ * @desc 将string或number格式的日期转安全地换为Date类型
+ * @param date {string|number} 日期
+ */
+export function toDate(date: string | number): Date {
+  if (!isValidDate(date) || (getType(date) !== 'string' && getType(date) !== 'number')) {
+    throw new Error('toDate: date is invalid');
+  }
+  if (typeof date === 'string') {
+    return new Date(date.replaceAll('/', '-'));
+  }
+  return new Date(date);
 }

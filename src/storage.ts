@@ -1,5 +1,5 @@
 import { ObjType, BaseType, StorageItem } from '@src/types';
-import { ONE_HOUR } from './constants';
+import { TimeUintMap } from './constants';
 export class Storage {
   /*
    * @desc 设置任意值得storage。过期时间以小时为单位[可选]
@@ -11,7 +11,7 @@ export class Storage {
       value,
     };
     if (expireHour && expireHour > 0) {
-      obj.expires = Date.now() + ONE_HOUR * expireHour;
+      obj.expires = Date.now() + TimeUintMap.hour * expireHour;
     }
     let stringify = '';
     try {

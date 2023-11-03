@@ -1,5 +1,7 @@
 # object
 
+[source code](https://github.com/CiroLee/utils-gear/blob/main/src/object.ts)
+
 常用对象处理函数
 
 ## pick
