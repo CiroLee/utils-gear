@@ -66,7 +66,7 @@ export function pickUniqueNumber(array: number[], n: number): number[] {
   }
 
   // 打乱数组
-  deduped.sort(() => Math.random() - 0.5);
+  shuffle(deduped);
   const picked = new Set<number>();
 
   for (let i = 0; i < n; i++) {
@@ -74,4 +74,80 @@ export function pickUniqueNumber(array: number[], n: number): number[] {
   }
 
   return [...picked];
+}
+
+/**
+ * @desc 随机打乱一个数组(fisher-yates洗牌算法)
+ * @param array {T[]}
+ */
+export function shuffle<T>(array: T[]): void {
+  if (!Array.isArray(array)) {
+    throw new Error('shuffle: array must be an Array');
+  }
+  let i = array.length;
+  let temp: T;
+  let random: number;
+  while (i !== 0) {
+    random = Math.floor(Math.random() * i);
+    i -= 1;
+    temp = array[i];
+    array[i] = array[random];
+    array[random] = temp;
+  }
+}
+/**
+ * @desc 生成指定范围内的随机整数, 包含min,max
+ * @param min {number} 范围最小值
+ * @param max {number} 范围最大值
+ * @note
+ * 如果省略max, 会将min作为max, 0作为min;
+ *
+ * 如果min > max, 会倒置min,max, 即min -> max, max -> min
+ */
+export function randomInt(min: number, max?: number): number {
+  if (typeof min !== 'number') {
+    throw new Error('randomInt: first param must be a number');
+  }
+  if (max === undefined || typeof max !== 'number') {
+    max = min;
+    min = 0;
+  }
+  const _min = Math.min(min, max);
+  const _max = Math.max(min, max);
+  return Math.floor(Math.random() * (_max - _min + 1) + _min);
+}
+
+/**
+ * @desc 计算数组的平均值
+ * @param array {number[]}
+ */
+export function mean(array: number[]): number {
+  if (!Array.isArray(array) || isAnyTrue(array, (n) => typeof n !== 'number')) {
+    throw new Error('mean: array must be a number Array');
+  }
+  return array.reduce((a, b) => a + b, 0) / array.length;
+}
+
+/**
+ * @desc 求和
+ * @param array {number[]}
+ */
+export function sum(array: number[]): number {
+  if (!Array.isArray(array) || isAnyTrue(array, (n) => typeof n !== 'number')) {
+    throw new Error('sum: array must be a number Array');
+  }
+  return array.reduce((a, b) => a + b, 0);
+}
+
+/**
+ * @param 标准差
+ * @param array {number[]}
+ */
+export function stdDev(array: number[]): number {
+  if (!Array.isArray(array) || isAnyTrue(array, (n) => typeof n !== 'number')) {
+    throw new Error('stdDev: array must be a number Array');
+  }
+  const avg = mean(array);
+  const squareDiff = array.map((x) => (x - avg) ** 2);
+  return Math.sqrt(mean(squareDiff));
 }
