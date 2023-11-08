@@ -106,7 +106,19 @@ export function dateOffset(date: Date, amount: number, timeUnit: TimeUnit): Date
   if (!TimeUintMap[timeUnit]) {
     throw new Error('dateOffset: timeUnit is invalid');
   }
-  return new Date(date.getTime() + amount * TimeUintMap[timeUnit]);
+  const _date = new Date(date.getTime());
+  const stack = {
+    year: (value: number) => _date.setFullYear(_date.getFullYear() + value),
+    month: (value: number) => _date.setMonth(_date.getMonth() + value),
+    day: (value: number) => _date.setDate(_date.getDate() + value),
+    week: (value: number) => _date.setDate(_date.getDate() + value * 7),
+    hour: (value: number) => _date.setHours(_date.getHours() + value),
+    minute: (value: number) => _date.setMinutes(_date.getMinutes() + value),
+    second: (value: number) => _date.setSeconds(_date.getSeconds() + value),
+    millisecond: (value: number) => _date.setMilliseconds(_date.getMilliseconds() + value),
+  };
+  stack[timeUnit](amount);
+  return _date;
 }
 
 /**

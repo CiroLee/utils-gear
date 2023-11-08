@@ -84,7 +84,7 @@ describe('dateOffset', () => {
 
   it('should offset the month correctly', () => {
     const result = date.dateOffset(initialDate, 3, 'month');
-    expect(result.getMonth() + 1).toBe(7);
+    expect(result.getMonth() + 1).toBe(8);
   });
 
   it('should offset the day correctly', () => {
