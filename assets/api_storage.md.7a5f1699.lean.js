@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as e,Q as p}from"./chunks/framework.c14f05da.js";const h=JSON.parse('{"title":"Storage","description":"","frontmatter":{},"headers":[],"relativePath":"api/storage.md","filePath":"api/storage.md"}'),o={name:"api/storage.md"},n=p("",20),t=[n];function l(r,c,i,y,d,g){return a(),e("div",null,t)}const u=s(o,[["render",l]]);export{h as __pageData,u as default};
