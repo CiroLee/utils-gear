@@ -42,7 +42,7 @@ describe('max test', () => {
   });
   test('MAX: input is a string array', () => {
     const param = ['1', '2', '3'];
-    expect(() => math.max(param as unknown as number[])).toThrowError();
+    expect(() => math.max(param as unknown as number[])).toThrow();
   });
 });
 
@@ -53,7 +53,7 @@ describe('min test', () => {
   });
   test('MIN: input is a number-like string array', () => {
     const param = ['1', '2', '3'];
-    expect(() => math.min(param as unknown as number[])).toThrowError();
+    expect(() => math.min(param as unknown as number[])).toThrow();
   });
 });
 
@@ -92,7 +92,7 @@ describe('pickUniqueNumbers', () => {
     const arr = [1, 2];
     expect(() => {
       math.pickUniqueNumber(arr, 3);
-    }).toThrowError();
+    }).toThrow();
   });
 
   it('should handle duplicate elements', () => {
@@ -100,5 +100,73 @@ describe('pickUniqueNumbers', () => {
     const result = math.pickUniqueNumber(arr, 3);
 
     expect(new Set(result).size).toBe(3);
+  });
+});
+
+describe('shuffle', () => {
+  it('should contain the same elements', () => {
+    const array = [1, 2, 3];
+    math.shuffle(array);
+    expect(array).toEqual(expect.arrayContaining(array));
+  });
+
+  it('param is not an array, should throw error', () => {
+    expect(() => math.shuffle(123 as unknown as any[])).toThrow();
+  });
+});
+
+describe('randomInt', () => {
+  it('should return the random int correctly', () => {
+    const result = math.randomInt(1, 10);
+    expect(result).toBeGreaterThanOrEqual(1);
+    expect(result).toBeLessThanOrEqual(10);
+  });
+
+  it('should throw error if the param is not an integer', () => {
+    expect(() => math.randomInt('1' as unknown as number, 10)).toThrow();
+  });
+  it('only one param', () => {
+    const result = math.randomInt(10);
+    expect(result).toBeGreaterThanOrEqual(0);
+    expect(result).toBeLessThanOrEqual(10);
+  });
+});
+
+describe('mean', () => {
+  it('should return mean value of the array correctly', () => {
+    const result = math.mean([1, 2, 3]);
+    expect(result).toBe(2);
+  });
+  it('array is not an array, should throw error', () => {
+    expect(() => math.mean(123 as unknown as any[])).toThrow();
+  });
+  it('elements in array is not number, should throw error', () => {
+    const array = [1, 2, '3'];
+    expect(() => math.mean(array as number[])).toThrow();
+  });
+});
+
+describe('sum', () => {
+  it('should return the sum value correctly', () => {
+    const result = math.sum([1, 2, 3]);
+    expect(result).toBe(6);
+  });
+  it('param is not an array, should throw error', () => {
+    expect(() => math.sum(123 as unknown as any[])).toThrow();
+  });
+  it('element in param is not array type, should throw error', () => {
+    expect(() => math.sum([1, 2, '3'] as number[])).toThrow();
+  });
+});
+
+describe('stdDev', () => {
+  it('should return standard deviation correctly', () => {
+    expect(math.stdDev([1, 2, 3, 4, 5])).toBeCloseTo(1.41);
+  });
+  it('param is not array, should throw error', () => {
+    expect(() => math.stdDev(123 as unknown as any[])).toThrow();
+  });
+  it('element in param is not number, should throw error', () => {
+    expect(() => math.stdDev([1, 2, '3'] as number[])).toThrow();
   });
 });

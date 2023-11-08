@@ -83,7 +83,7 @@ describe('IsPrime test', () => {
   test('ISPRIME: num is Infinity', () => {
     expect(() => {
       validator.IsPrime(Infinity);
-    }).toThrowError();
+    }).toThrow();
   });
   test('ISPRIME: invalid num', () => {
     const nums = [-1, 0, 1, 1.2, 4];

@@ -5,7 +5,7 @@ describe('encryptedPhone test', () => {
     const phoneNum = 123456;
     expect(() => {
       str.encryptedPhone(phoneNum);
-    }).toThrowError();
+    }).toThrow();
   });
   test('ENCRYPTEDPHONE: valid phone number and hide its middle four digits', () => {
     const phoneNum = 13700001111;

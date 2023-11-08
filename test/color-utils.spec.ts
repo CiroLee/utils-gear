@@ -14,7 +14,7 @@ describe('extractRGB test', () => {
   });
   test('extractRGB: input is not a rgb-type color', () => {
     const color = '#fff';
-    expect(() => extractRGB(color)).toThrowError();
+    expect(() => extractRGB(color)).toThrow();
   });
 });
 
@@ -32,6 +32,6 @@ describe('extractHSL test', () => {
   });
   test('extractHSL: input is not a hsl-type color', () => {
     const color = '#fff';
-    expect(() => extractHSL(color)).toThrowError();
+    expect(() => extractHSL(color)).toThrow();
   });
 });

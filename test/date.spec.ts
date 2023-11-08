@@ -70,7 +70,7 @@ describe('dateFormat test', () => {
   test('DATEFORMAT: invalid date', () => {
     expect(() => {
       date.dateFormat(mockTimestamp as unknown as Date);
-    }).toThrowError();
+    }).toThrow();
   });
 });
 
@@ -119,17 +119,17 @@ describe('dateOffset', () => {
   it('invalid date', () => {
     expect(() => {
       date.dateOffset('2022-1-1' as unknown as Date, 2, 'year');
-    }).toThrowError();
+    }).toThrow();
   });
   it('invalid amount', () => {
     expect(() => {
       date.dateOffset(initialDate, '2' as unknown as number, 'year');
-    }).toThrowError();
+    }).toThrow();
   });
   it('invalid timeUnit', () => {
     expect(() => {
       date.dateOffset(initialDate, 2, 'years' as any);
-    }).toThrowError();
+    }).toThrow();
   });
 });
 
@@ -143,7 +143,7 @@ describe('dateMaxMin', () => {
     const dates = ['2022-01-01:12:00:00', new Date('2024-01-01 12:00:00')];
     expect(() => {
       date.dateMaxMin(dates as Date[], 'max');
-    }).toThrowError();
+    }).toThrow();
   });
   it('should return the min date correctly', () => {
     const dates = [new Date('2023-01-01 12:00:00'), new Date('2024-01-01 12:00:00')];
@@ -164,7 +164,7 @@ describe('dateEqual', () => {
     const date2 = '2022-01-01 12:00:00';
     expect(() => {
       date.dateEqual(date1, date2 as unknown as Date);
-    }).toThrowError();
+    }).toThrow();
   });
 });
 
@@ -188,7 +188,7 @@ describe('dateDiff', () => {
     });
   });
   it('invalid date, should throw error', () => {
-    expect(() => date.dateDiff(d1, '2021-11-31 22:12:12' as unknown as Date, 'day')).toThrowError();
+    expect(() => date.dateDiff(d1, '2021-11-31 22:12:12' as unknown as Date, 'day')).toThrow();
   });
 });
 
@@ -211,7 +211,7 @@ describe('isValidDate test', () => {
 describe('dateToObject', () => {
   it('invalid date, should throw error', () => {
     const dateParam = '2023-11-01:12:00:00';
-    expect(() => date.dateToObject(dateParam as unknown as Date)).toThrowError();
+    expect(() => date.dateToObject(dateParam as unknown as Date)).toThrow();
   });
   it('valid date, should return date object correctly', () => {
     const result = date.dateToObject(mockDate);
@@ -222,7 +222,7 @@ describe('dateToObject', () => {
 describe('daysInMonth', () => {
   it('invalid date, should throw error', () => {
     const dateParam = '2023-11-01:12:00:00';
-    expect(() => date.daysInMonth(dateParam as unknown as Date)).toThrowError();
+    expect(() => date.daysInMonth(dateParam as unknown as Date)).toThrow();
   });
   it('should return days correctly', () => {
     const result = date.daysInMonth(mockDate);
@@ -233,7 +233,7 @@ describe('daysInMonth', () => {
 describe('weekOfYear', () => {
   it('invalid date, should throw error', () => {
     const dateParam = '2023-11-01:12:00:00';
-    expect(() => date.weekOfYear(dateParam as unknown as Date)).toThrowError();
+    expect(() => date.weekOfYear(dateParam as unknown as Date)).toThrow();
   });
   it('should return week correctly', () => {
     const result = date.weekOfYear(mockDate);
@@ -244,7 +244,7 @@ describe('weekOfYear', () => {
 describe('weekOfMonth', () => {
   it('invalid date, should throw error', () => {
     const dateParam = '2023-11-01:12:00:00';
-    expect(() => date.weekOfMonth(dateParam as unknown as Date)).toThrowError();
+    expect(() => date.weekOfMonth(dateParam as unknown as Date)).toThrow();
   });
   it('should return week correctly', () => {
     const result = date.weekOfMonth(mockDate);
@@ -263,9 +263,9 @@ describe('toDate', () => {
     expect(date.dateEqual(mockDate, result)).toBeTruthy();
   });
   it('invalid date(e.g:{}), should throw error', () => {
-    expect(() => date.toDate({} as any)).toThrowError();
+    expect(() => date.toDate({} as any)).toThrow();
   });
   it('invalid date(e.g:""), should throw error', () => {
-    expect(() => date.toDate('' as any)).toThrowError();
+    expect(() => date.toDate('' as any)).toThrow();
   });
 });
