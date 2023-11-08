@@ -5,7 +5,7 @@ describe('hexToRgb test', () => {
     const color = '0xffff000';
     expect(() => {
       colors.hexToRgb(color);
-    }).toThrowError();
+    }).toThrow();
   });
   test('hexToRgb, white color', () => {
     const color = '#fff';
