@@ -1,4 +1,3 @@
-export * from './date';
 export * from './utils';
 export * from './math';
 export * from './object';

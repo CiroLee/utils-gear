@@ -19,8 +19,8 @@ example:
 ```typescript
 zeroFill(1); // '01'
 zeroFill(11); // '11'
-zeroFill(-1); // '-1'
-zeroFill('1.1'); // '-01.1'
+zeroFill(-1); // '-01'
+zeroFill('1.1'); // '01.1'
 ```
 
 ## max

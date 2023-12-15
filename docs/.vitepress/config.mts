@@ -22,10 +22,6 @@ export default defineConfig({
             link: '/api/object.md',
           },
           {
-            text: 'date',
-            link: '/api/date.md',
-          },
-          {
             text: 'math',
             link: '/api/math.md',
           },
