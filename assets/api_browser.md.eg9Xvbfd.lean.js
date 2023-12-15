@@ -1,0 +1,1 @@
+import{_ as s,o as i,c as a,R as t}from"./chunks/framework.XGA6phS-.js";const y=JSON.parse('{"title":"browser","description":"","frontmatter":{},"headers":[],"relativePath":"api/browser.md","filePath":"api/browser.md"}'),p={name:"api/browser.md"},e=t("",26),h=[e];function n(l,k,r,d,g,o){return i(),a("div",null,h)}const E=s(p,[["render",n]]);export{y as __pageData,E as default};

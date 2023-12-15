@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as p,Q as o}from"./chunks/framework.c14f05da.js";const g=JSON.parse('{"title":"Cookie","description":"","frontmatter":{},"headers":[],"relativePath":"api/cookie.md","filePath":"api/cookie.md"}'),n={name:"api/cookie.md"},l=o("",21),e=[l];function t(c,r,i,y,E,d){return a(),p("div",null,e)}const h=s(n,[["render",t]]);export{g as __pageData,h as default};

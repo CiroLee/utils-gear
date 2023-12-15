@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as l,Q as e}from"./chunks/framework.c14f05da.js";const E=JSON.parse('{"title":"utils-gear","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),n={name:"index.md"},o=e("",8),p=[o];function t(r,i,c,y,d,h){return a(),l("div",null,p)}const u=s(n,[["render",t]]);export{E as __pageData,u as default};
