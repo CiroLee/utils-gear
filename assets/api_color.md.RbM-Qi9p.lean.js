@@ -1,1 +1,0 @@
-import{_ as s,o as i,c as a,R as t}from"./chunks/framework.XGA6phS-.js";const y=JSON.parse('{"title":"Color","description":"","frontmatter":{},"headers":[],"relativePath":"api/color.md","filePath":"api/color.md"}'),h={name:"api/color.md"},p=t("",37),e=[p];function l(n,k,r,d,o,g){return i(),a("div",null,e)}const E=s(h,[["render",l]]);export{y as __pageData,E as default};
