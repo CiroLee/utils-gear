@@ -107,3 +107,23 @@ const obj = {
 };
 objectTrueValue(obj); // { a: 1 }
 ```
+
+## isEmptyObject         
+
+判断一个对象是否为空        
+
+```ts
+function isEmptyObject(obj: ObjType):boolean;
+```
+
+```ts
+const obj1 = { a:1, b: null };
+const obj2 = {};
+Object.defineProperty(obj2, 'attr', {
+  value: 'sth',
+  enumerable: false
+});
+
+isEmptyObject(obj1); // false
+isEmptyObject(obj2); // false
+```
