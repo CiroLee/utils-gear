@@ -18,6 +18,10 @@ export default defineConfig({
             link: '/api/string.md',
           },
           {
+            text: 'number',
+            link: '/api/number.md',
+          },
+          {
             text: 'object',
             link: '/api/object.md',
           },
