@@ -4,11 +4,12 @@ import { SpaceOption } from './types';
  * @desc 隐藏手机中间四位数字
  * @param num string
  */
-export function encryptedPhone(num: string | number): string {
+export function encryptedPhone(num: string | number, placeholder = '*'): string {
   if (num.toString().length < 11) {
     throw new Error('phone number must be 11 digits');
   }
-  return num.toString().replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+  const ph = placeholder.repeat(4);
+  return num.toString().replace(/(\d{3})\d{4}(\d{4})/, `$1${ph}$2`);
 }
 /**
  * @desc 转换字符串首字母为大写或小写

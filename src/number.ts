@@ -14,6 +14,12 @@ function convertSection(section: string, chineseNumbers: string[], unit: string[
   }
   return sectionStr !== '' ? sectionStr : '零';
 }
+
+/**
+ * @desc 将阿拉伯数字金额转为中文大写金额
+ * @param {Number} currency 数字金额
+ * @returns {String}
+ */
 export function convertToZhCurrency(currency: number): string {
   const chineseNumbers = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
   const unit1 = ['', '拾', '佰', '仟'];
@@ -77,4 +83,14 @@ export function convertToZhCurrency(currency: number): string {
     chineseCurrency += integerPart !== '0' ? '元整' : '零元整';
   }
   return (isNegative ? '负' : '') + chineseCurrency;
+}
+
+/**
+ * @desc 根据指定的货币格式将数字转换为金额
+ * @param {String} currency  货币名称简写 参考: https://en.wikipedia.org/wiki/ISO_4217#List_of_ISO_4217_currency_codes
+ * @param {String} langFormat 语言格式 参考: https://www.techonthenet.com/js/language_tags.php
+ * @returns {String}
+ */
+export function toCurrency(num: number, currency: string, langFormat?: string): string {
+  return Intl.NumberFormat(langFormat, { style: 'currency', currency }).format(num);
 }

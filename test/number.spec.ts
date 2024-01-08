@@ -21,3 +21,12 @@ describe('convertToZhCurrency test', () => {
     expect(number.convertToZhCurrency(input)).toBe('壹佰贰拾叁元肆角伍分肆厘叁');
   });
 });
+
+describe('toCurrency test', () => {
+  it('use local language format', () => {
+    expect(number.toCurrency(123.12, 'EUR')).toBe('€123.12');
+  });
+  it('give a language format', () => {
+    expect(number.toCurrency(123.12, 'CNY', 'zh-CN')).toBe('¥123.12');
+  });
+});

@@ -12,6 +12,11 @@ describe('encryptedPhone test', () => {
     const result = str.encryptedPhone(phoneNum);
     expect(result).toBe('137****1111');
   });
+  test('ENCRYPTEDPHONE: custom placeholder', () => {
+    const phoneNum = 13700001111;
+    const result = str.encryptedPhone(phoneNum, '#');
+    expect(result).toBe('137####1111');
+  });
 });
 
 describe('upperCaseFirstLetter test', () => {
