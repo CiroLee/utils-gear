@@ -11,13 +11,14 @@
 signature:
 
 ```typescript
-function encryptedPhone(num: string | number): string;
+function encryptedPhone(num: string | number, placeholder = '*'): string;
 ```
 
 example:
 
 ```typescript
 encryptedPhone(13311112222); // '133****2222'
+encryptedPhone(13311112222, '#'); // '133####2222'
 ```
 
 ## transFirstLetterTo
@@ -179,4 +180,35 @@ example:
 
 ```typescript
 uuid(); // '4e5f6f7f-8f9a-11ec-9dcb-0242ac120002'
+```
+
+## encodeBase64
+
+将字符串编码为base64格式  
+signature:
+
+```typescript
+function encodeBase64(str: string): string;
+```
+
+example:
+
+```typescript
+encodeBase64('hello 😁 世界'); // aGVsbG8g8J+YgSDkuJbnlYw=
+```
+
+## decodeBase64
+
+解码base64
+
+signature:
+
+```typescript
+function decodeBase64(str: string): string;
+```
+
+example:
+
+```typescript
+decodeBase64('aGVsbG8g8J+YgSDkuJbnlYw='); // hello 😁 世界
 ```

@@ -4,11 +4,12 @@ import { SpaceOption } from './types';
  * @desc 隐藏手机中间四位数字
  * @param num string
  */
-export function encryptedPhone(num: string | number): string {
+export function encryptedPhone(num: string | number, placeholder = '*'): string {
   if (num.toString().length < 11) {
     throw new Error('phone number must be 11 digits');
   }
-  return num.toString().replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+  const ph = placeholder.repeat(4);
+  return num.toString().replace(/(\d{3})\d{4}(\d{4})/, `$1${ph}$2`);
 }
 /**
  * @desc 转换字符串首字母为大写或小写
@@ -111,4 +112,29 @@ export function uuid(): string {
     const v = c === 'x' ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
+}
+
+/**
+ * @desc 将字符串编码为base64格式
+ * @param {String} str
+ * @returns {String}
+ */
+export function encodeBase64(str: string): string {
+  const encoder = new TextEncoder();
+  const data = Array.from(new Uint8Array(encoder.encode(str)));
+  return btoa(String.fromCharCode.apply(null, data));
+}
+
+/**
+ * @desc 解码base64
+ * @param {String} str
+ * @returns {String}
+ */
+export function decodeBase64(base64: string): string {
+  const bytes = atob(base64);
+  const uint8Array = new Uint8Array(bytes.length);
+  for (let i = 0; i < bytes.length; i++) {
+    uint8Array[i] = bytes.charCodeAt(i);
+  }
+  return new TextDecoder('utf-8').decode(uint8Array);
 }

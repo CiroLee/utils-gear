@@ -12,6 +12,11 @@ describe('encryptedPhone test', () => {
     const result = str.encryptedPhone(phoneNum);
     expect(result).toBe('137****1111');
   });
+  test('ENCRYPTEDPHONE: custom placeholder', () => {
+    const phoneNum = 13700001111;
+    const result = str.encryptedPhone(phoneNum, '#');
+    expect(result).toBe('137####1111');
+  });
 });
 
 describe('upperCaseFirstLetter test', () => {
@@ -185,5 +190,14 @@ describe('uuid test', () => {
     const id1 = str.uuid();
     const id2 = str.uuid();
     expect(id1).not.toBe(id2);
+  });
+});
+
+describe('encodeBase64 and decodeBase64 test', () => {
+  it('should encode correctly', () => {
+    expect(str.encodeBase64('hello 😁 世界')).toBe('aGVsbG8g8J+YgSDkuJbnlYw=');
+  });
+  it('should decode correctly', () => {
+    expect(str.decodeBase64('aGVsbG8g8J+YgSDkuJbnlYw=')).toBe('hello 😁 世界');
   });
 });
