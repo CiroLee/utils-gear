@@ -113,3 +113,28 @@ export function uuid(): string {
     return v.toString(16);
   });
 }
+
+/**
+ * @desc 将字符串编码为base64格式
+ * @param {String} str
+ * @returns {String}
+ */
+export function encodeBase64(str: string): string {
+  const encoder = new TextEncoder();
+  const data = Array.from(new Uint8Array(encoder.encode(str)));
+  return btoa(String.fromCharCode.apply(null, data));
+}
+
+/**
+ * @desc 解码base64
+ * @param {String} str
+ * @returns {String}
+ */
+export function decodeBase64(base64: string): string {
+  const bytes = atob(base64);
+  const uint8Array = new Uint8Array(bytes.length);
+  for (let i = 0; i < bytes.length; i++) {
+    uint8Array[i] = bytes.charCodeAt(i);
+  }
+  return new TextDecoder('utf-8').decode(uint8Array);
+}

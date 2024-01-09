@@ -67,3 +67,12 @@ export function IsPrime(num: number): boolean {
   }
   return true;
 }
+
+/**
+ * @desc 检查字符串是否为base64格式
+ * @param {String} text
+ * @returns {Boolean}
+ */
+export function isBase64(text: string): boolean {
+  return /^[A-Za-z0-9+/]*={0,2}$/.test(text);
+}

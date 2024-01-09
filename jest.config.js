@@ -6,6 +6,7 @@ module.exports = {
   coverageReporters: ['cobertura', 'text', 'lcov', 'clover'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'vue'],
   testEnvironment: 'jsdom',
+  setupFiles: ['<rootDir>/testSetup.js'],
   testMatch: ['**/test/**/*.{spec,test}.ts'],
   moduleNameMapper: {
     '^@src/(.*)$': '<rootDir>/src/$1',

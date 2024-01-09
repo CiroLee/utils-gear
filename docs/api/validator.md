@@ -102,3 +102,18 @@ isPrime(1); // false
 isPrime(-1); // false
 isPrime(1.2); // false
 ```
+
+## isBase64
+
+检查字符串是否为base64格式  
+signature:
+
+```typescript
+function isBase64(str: string): boolean;
+```
+
+example:
+
+```typescript
+isBase64('aGVsbG8='); // true
+```

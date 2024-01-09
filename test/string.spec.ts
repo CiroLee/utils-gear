@@ -192,3 +192,12 @@ describe('uuid test', () => {
     expect(id1).not.toBe(id2);
   });
 });
+
+describe('encodeBase64 and decodeBase64 test', () => {
+  it('should encode correctly', () => {
+    expect(str.encodeBase64('hello 😁 世界')).toBe('aGVsbG8g8J+YgSDkuJbnlYw=');
+  });
+  it('should decode correctly', () => {
+    expect(str.decodeBase64('aGVsbG8g8J+YgSDkuJbnlYw=')).toBe('hello 😁 世界');
+  });
+});

@@ -15,14 +15,23 @@
     "test:unit": "jest --coverage"
   },
   "lint-staged": {
-    "src/**/*.{js,ts,tsx,json,md}": ["eslint --config .eslintrc.js"]
+    "src/**/*.{js,ts,tsx,json,md}": [
+      "eslint --config .eslintrc.js"
+    ]
   },
-  "keywords": ["utils", "frontend", "gear", "utils-gear"],
+  "keywords": [
+    "utils",
+    "frontend",
+    "gear",
+    "utils-gear"
+  ],
   "homepage": "https://github.com/CiroLee/utils-gear",
   "bugs": {
     "url": "https://github.com/CiroLee/utils-gear/issues"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/CiroLee/utils-gear.git"
@@ -42,6 +51,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
+    "text-encoding": "^0.7.0",
     "ts-jest": "^29.1.1",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",

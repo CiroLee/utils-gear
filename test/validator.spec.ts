@@ -14,8 +14,8 @@ describe('isAllTrue test', () => {
 
 describe('isAnyTrue test', () => {
   test('isAnyTrue: isAnyTrue that use default callback function', () => {
-    const reuslt = validator.isAnyTrue(mockArr);
-    expect(reuslt).toBeTruthy();
+    const result = validator.isAnyTrue(mockArr);
+    expect(result).toBeTruthy();
   });
   test('isAnyTrue: isAnyTure that uses custom callback function', () => {
     const result = validator.isAnyTrue(mockArr, (item: number) => item > -1);
@@ -91,5 +91,14 @@ describe('IsPrime test', () => {
       const result = validator.IsPrime(n);
       expect(result).toBeFalsy();
     });
+  });
+});
+
+describe('isBase64 test', () => {
+  it('text is not base64, should return false', () => {
+    expect(validator.isBase64('asdasd===')).toBeFalsy();
+  });
+  it('text is base64, should return true', () => {
+    expect(validator.isBase64('aGVsbG8g8J+YgSDkuJbnlYw=')).toBeTruthy();
   });
 });
