@@ -36,25 +36,24 @@ describe('isNumberLike test', () => {
 });
 
 describe('isEmptyObject test', () => {
-  test('ISEMPTYOBJECT: param is an not-empty array', () => {
-    const param = [1, 2, 3];
-    expect(validator.isEmptyObject(param)).toBeFalsy();
+  test('param is not an object, should throw an error', () => {
+    expect(() => {
+      validator.isEmptyObject([]);
+    }).toThrow(/isEmptyObject/);
   });
-  test('ISEMPTYOBJECT: param is an empty array', () => {
-    const param: unknown[] = [];
-    expect(validator.isEmptyObject(param)).toBeTruthy();
+  test('param is not an object, should return false correctly', () => {
+    const obj1 = { a: 1, b: null };
+    const obj2 = {};
+    Object.defineProperty(obj2, 'attr', {
+      value: 'sth',
+      enumerable: false,
+    });
+
+    expect(validator.isEmptyObject(obj1)).toBeFalsy();
+    expect(validator.isEmptyObject(obj2)).toBeFalsy();
   });
-  test('ISEMPTYOBJECT: param is an empty object', () => {
-    const param = {};
-    expect(validator.isEmptyObject(param)).toBeTruthy();
-  });
-  test('ISEMPTYOBJECT: param is not an empty object', () => {
-    const param = { a: 1 };
-    expect(validator.isEmptyObject(param)).toBeFalsy();
-  });
-  test('ISEMPTYOBJECT: param is null', () => {
-    const param = null;
-    expect(validator.isEmptyObject(param as any)).toBeFalsy();
+  test('param is an empty object, should return true correctly', () => {
+    expect(validator.isEmptyObject({})).toBeTruthy();
   });
 });
 

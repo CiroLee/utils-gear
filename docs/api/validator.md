@@ -68,20 +68,22 @@ isNumberLike(''); // true
 
 ## isEmptyObject
 
-判断输入是否为空对象  
-signature:
+判断一个对象是否为空
 
-```typescript
-function isEmptyObject(param: ObjType): boolean;
+```ts
+function isEmptyObject(obj: ObjType): boolean;
 ```
 
-example:
+```ts
+const obj1 = { a: 1, b: null };
+const obj2 = {};
+Object.defineProperty(obj2, 'attr', {
+  value: 'sth',
+  enumerable: false,
+});
 
-```typescript
-isEmptyObject({}); // true
-isEmptyObject({ a: 1 }); // false
-isEmptyObject([]); // true
-isEmptyObject(null); // false
+isEmptyObject(obj1); // false
+isEmptyObject(obj2); // false
 ```
 
 ## isPrime

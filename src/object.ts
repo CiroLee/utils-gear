@@ -1,5 +1,4 @@
 import { ObjType } from './types';
-import { getType } from './utils';
 /**
  * @desc 挑出对象中指定键名的数据
  * @param obj object 待处理的对象
@@ -48,14 +47,4 @@ export function omitBy<T>(obj: ObjType, fn: (item?: ObjType[keyof ObjType]) => b
  */
 export function objectTrueValue<T>(obj: ObjType): T {
   return pickBy<T>(obj, Boolean);
-}
-
-/**
- * @desc 判断参数是否为空对象
- */
-export function isEmptyObejct(obj: ObjType): boolean {
-  if (getType(obj) !== 'object') {
-    throw new Error('isEmptyObject: obj must be an object');
-  }
-  return Reflect.ownKeys(obj).length === 0;
 }

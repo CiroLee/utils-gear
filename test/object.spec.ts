@@ -52,25 +52,3 @@ describe('omit test', () => {
     expect(result).toEqual({ a: 1 });
   });
 });
-
-describe('isEmptyObject test', () => {
-  test('param is not an object, should throw an error', () => {
-    expect(() => {
-      object.isEmptyObejct([]);
-    }).toThrow(/isEmptyObject/);
-  });
-  test('param is not an object, should return false correctly', () => {
-    const obj1 = { a: 1, b: null };
-    const obj2 = {};
-    Object.defineProperty(obj2, 'attr', {
-      value: 'sth',
-      enumerable: false,
-    });
-
-    expect(object.isEmptyObejct(obj1)).toBeFalsy();
-    expect(object.isEmptyObejct(obj2)).toBeFalsy();
-  });
-  test('param is an empty object, should return true correctly', () => {
-    expect(object.isEmptyObejct({})).toBeTruthy();
-  });
-});
