@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,V as t}from"./chunks/framework.rxza4FuD.js";const y=JSON.parse('{"title":"Color","description":"","frontmatter":{},"headers":[],"relativePath":"api/color.md","filePath":"api/color.md"}'),h={name:"api/color.md"},p=t("",37),e=[p];function l(n,k,r,d,o,g){return a(),i("div",null,e)}const E=s(h,[["render",l]]);export{y as __pageData,E as default};
