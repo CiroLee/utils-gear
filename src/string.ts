@@ -1,7 +1,7 @@
 import { SpaceOption } from './types';
 
 /**
- * @desc 隐藏手机中间四位数字
+ * @description 隐藏手机中间四位数字
  * @param num string
  */
 export function encryptedPhone(num: string | number, placeholder = '*'): string {
@@ -12,7 +12,7 @@ export function encryptedPhone(num: string | number, placeholder = '*'): string 
   return num.toString().replace(/(\d{3})\d{4}(\d{4})/, `$1${ph}$2`);
 }
 /**
- * @desc 转换字符串首字母为大写或小写
+ * @description 转换字符串首字母为大写或小写
  * @param str string
  * @param to 'upper' | 'lower'
  */
@@ -21,7 +21,7 @@ export function transFirstLetterTo(str: string, to: 'upper' | 'lower'): string {
   return str.replace(/^\S/, (L) => (to === 'upper' ? L.toUpperCase() : L.toLowerCase()));
 }
 /**
- * @desc 返回指定数量的空格
+ * @description 返回指定数量的空格
  * @param num number 空格数量, 默认为1
  */
 export function whiteSpace(num = 1): string {
@@ -32,7 +32,7 @@ export function whiteSpace(num = 1): string {
 const convertRefExp = /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g;
 
 /*
- * @desc 字符串转小驼峰格式(camelCase)
+ * @description 字符串转小驼峰格式(camelCase)
  */
 export function camelCase(str: string): string {
   const matches = str.match(convertRefExp) as RegExpExecArray;
@@ -41,7 +41,7 @@ export function camelCase(str: string): string {
 }
 
 /*
- * @desc 字符串转大驼峰格式(PascalCase)
+ * @description 字符串转大驼峰格式(PascalCase)
  */
 export function pascalCase(str: string): string {
   const matches = str.match(convertRefExp) as RegExpExecArray;
@@ -49,21 +49,21 @@ export function pascalCase(str: string): string {
 }
 
 /*
- * @desc 字符串转烤串式(kebab-case)
+ * @description 字符串转烤串式(kebab-case)
  */
 export function kebabCase(str: string): string {
   const matches = str.match(convertRefExp) as RegExpExecArray;
   return matches.map((x) => x.toLowerCase()).join('-');
 }
 /*
- * @desc 字符串转蛇式(snake_case)
+ * @description 字符串转蛇式(snake_case)
  */
 export function snakeCase(str: string) {
   const matches = str.match(convertRefExp) as RegExpExecArray;
   return matches.map((x) => x.toLowerCase()).join('_');
 }
 /*
- * @desc 删除字符串中的指定索引的字符
+ * @description 删除字符串中的指定索引的字符
  * @param str 目标字符串
  * @param index 删除位置索引
  */
@@ -72,7 +72,7 @@ export function deleteAt(str: string, index: number): string {
 }
 
 /*
-@desc 替换字符串中指定索引的字符
+@description 替换字符串中指定索引的字符
 @param str 目标字符串
 @param char 替换的字符
 @param index 替换位置索引
@@ -82,7 +82,7 @@ export function replaceAt(str: string, index: number, char: string): string {
 }
 
 /**
- * @desc 去除字符串中的空格
+ * @description 去除字符串中的空格
  * @param str 目标字符串
  * @param option 'start' | 'end' | 'both' | 'all', 默认为all, 去除所有空格
  * @returns string
@@ -103,7 +103,7 @@ export function removeSpaces(str: string, option: SpaceOption = 'all') {
 }
 
 /**
- * @desc 生成一个uuid(v4)
+ * @description 生成一个uuid(v4)
  * @returns string
  */
 export function uuid(): string {
@@ -115,7 +115,7 @@ export function uuid(): string {
 }
 
 /**
- * @desc 将字符串编码为base64格式
+ * @description 将字符串编码为base64格式
  * @param {String} str
  * @returns {String}
  */
@@ -126,7 +126,7 @@ export function encodeBase64(str: string): string {
 }
 
 /**
- * @desc 解码base64
+ * @description 解码base64
  * @param {String} str
  * @returns {String}
  */

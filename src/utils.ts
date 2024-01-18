@@ -1,12 +1,12 @@
 /**
- * @desc 获取数据类型
+ * @description 获取数据类型
  */
 export function getType(v?: any): string {
   return Object.prototype.toString.call(v).slice(8, -1).toLowerCase();
 }
 
 /**
- * @desc 节流函数
+ * @description 节流函数
  */
 export function throttle(fn: Function, wait = 300) {
   let last: number = 0;
@@ -18,7 +18,7 @@ export function throttle(fn: Function, wait = 300) {
   };
 }
 /**
- * @desc 防抖函数
+ * @description 防抖函数
  */
 export function debounce(fn: Function, delay = 300) {
   let timer: ReturnType<typeof setTimeout>;

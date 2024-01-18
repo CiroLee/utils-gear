@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    'max-len': ['error', { code: 120 }],
+    'max-len': ['error', { code: 200 }],
     complexity: ['error', 20],
   },
 };

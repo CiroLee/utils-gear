@@ -1,6 +1,6 @@
 import { ObjType } from './types';
 /**
- * @desc 挑出对象中指定键名的数据
+ * @description 挑出对象中指定键名的数据
  * @param obj object 待处理的对象
  * @param arr string[] 键名属猪
  */
@@ -10,7 +10,7 @@ export function pick<T>(obj: ObjType, arr: string[]): T {
 }
 
 /**
- * @desc 剔除对象中指定键名的数据
+ * @description 剔除对象中指定键名的数据
  * @param obj object 待处理的对象
  * @param arr string[] 键名属猪
  */
@@ -22,7 +22,7 @@ export function omit<T>(obj: ObjType, arr: string[]): T {
 }
 
 /**
- * @desc 挑出一个由给定函数返回true的属性组成的对象
+ * @description 挑出一个由给定函数返回true的属性组成的对象
  * @param obj 待处理对象
  * @param fn 处理函数
  */
@@ -33,7 +33,7 @@ export function pickBy<T>(obj: ObjType, fn: (item?: ObjType[keyof ObjType]) => b
 }
 
 /**
- * @desc 剔除一个由给定函数返回false的属性组成的对象
+ * @description 剔除一个由给定函数返回false的属性组成的对象
  * @param obj 待处理对象
  * @param fn 处理函数
  */
@@ -43,7 +43,7 @@ export function omitBy<T>(obj: ObjType, fn: (item?: ObjType[keyof ObjType]) => b
   return omit<T>(obj, arr);
 }
 /**
- * @desc 提取对象中的真值组成的对象
+ * @description 提取对象中的真值组成的对象
  */
 export function objectTrueValue<T>(obj: ObjType): T {
   return pickBy<T>(obj, Boolean);

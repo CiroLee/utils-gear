@@ -16,7 +16,7 @@ function convertSection(section: string, chineseNumbers: string[], unit: string[
 }
 
 /**
- * @desc 将阿拉伯数字金额转为中文大写金额
+ * @description 将阿拉伯数字金额转为中文大写金额
  * @param {Number} currency 数字金额
  * @returns {String}
  */
@@ -86,7 +86,7 @@ export function convertToZhCurrency(currency: number): string {
 }
 
 /**
- * @desc 根据指定的货币格式将数字转换为金额
+ * @description 根据指定的货币格式将数字转换为金额
  * @param {String} currency  货币名称简写 参考: https://en.wikipedia.org/wiki/ISO_4217#List_of_ISO_4217_currency_codes
  * @param {String} langFormat 语言格式 参考: https://www.techonthenet.com/js/language_tags.php
  * @returns {String}

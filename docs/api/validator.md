@@ -119,3 +119,122 @@ example:
 ```typescript
 isBase64('aGVsbG8='); // true
 ```
+
+## isEmail
+
+检查字符串是否为邮箱格式  
+signature:
+
+```typescript
+function isEmail(str: string): boolean;
+```
+
+example:
+
+```typescript
+isEmail('test@test.com'); // true
+isEmail('test@test'); // false
+```
+
+## isPhoneNumber
+
+检查字符串是否为中国手机号, 可选验证严格程度, low(1开头): 宽松, medium: 常规(13,14,15,16,17,18,19), high: 严格, 默认为medium  
+signature:
+
+```typescript
+function isPhoneNumber(str: number | string, strictness?: 'low' | 'medium' | 'high'): boolean;
+```
+
+example:
+
+```typescript
+isPhoneNumber(12345678901, 'low'); // true
+isPhoneNumber(13876543210); // true
+isPhoneNumber('+8613876543210', 'high'); // true
+isPhoneNumber(14234567890, 'high'); // false
+```
+
+## isIDNumber
+
+检查字符串是否为中国内地二代身份证号码  
+signature:
+
+```ts
+function isIDNumber(id: string): boolean;
+```
+
+example:
+
+```ts
+isIDNumber('440301199012301234'); // true
+isIDNumber('440301199912321212'); // false, ps: 日期错误
+```
+
+## isFloat
+
+检查数字是否为浮点数  
+signature:
+
+```ts
+function isFloat(num: number): boolean;
+```
+
+example:
+
+```ts
+isFloat(1.2); // true
+isFloat(1); // false
+```
+
+## isInt
+
+检查数字是否为整数
+
+signature:
+
+```ts
+function isInt(num: number): boolean;
+```
+
+example:
+
+```ts
+isInt(1); // true
+isInt(1.2); // false
+isInt(0); // true
+```
+
+## isUrl
+
+检查字符串是否为URL
+
+signature:
+
+```ts
+function isUrl(url: string): boolean;
+```
+
+example:
+
+```ts
+isUrl('https://www.baidu.com'); // true
+isUrl('http://www.baidu.com'); // true
+isUrl('ftp://www.example.com'); // true
+```
+
+## isQQNumber
+
+检查输入是否为QQ号码
+
+signature:
+
+```ts
+function isQQNumber(qq: number | string): boolean;
+```
+
+example:
+
+```ts
+isQQNumber(123456789); // true
+isQQNumber('0123573'); // false
+```

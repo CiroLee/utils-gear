@@ -4,7 +4,7 @@ import { TimeUintMap } from './constants';
 
 export class Cookie {
   /**
-   * @desc 获取cookie
+   * @description 获取cookie
    * @param name string[可选] cookie名称，
    */
   static get(): ObjType | Nullish;
@@ -20,7 +20,7 @@ export class Cookie {
     return name ? cookieValues[name] : cookieValues;
   }
   /**
-   * @desc 以key-value 对象形式设置cookie, 默认过期时间为1小时
+   * @description 以key-value 对象形式设置cookie, 默认过期时间为1小时
    */
   static set({ name, value, expireHour = 1, domain }: CookieParam): void {
     const date = new Date();
@@ -31,7 +31,7 @@ export class Cookie {
     document.cookie = `${name}=${encodeURI(value)}${expires}${setDomian}`;
   }
   /**
-   * @desc 删除cookie, 省略name则删除所有cookie
+   * @description 删除cookie, 省略name则删除所有cookie
    */
   static delete(name?: string): void {
     if (name) {
