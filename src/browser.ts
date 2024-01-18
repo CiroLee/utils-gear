@@ -1,6 +1,6 @@
 import type { ObjType, PlatformType } from './types';
 /**
- * @desc 通过userAgent获取常用平台类型
+ * @description 通过userAgent获取常用平台类型
  * @param ua {String} userAgent
  */
 export function getPlatformType(ua: string): PlatformType {
@@ -22,7 +22,7 @@ export function getPlatformType(ua: string): PlatformType {
 }
 
 /**
- * @desc 将url参数解析为对象
+ * @description 将url参数解析为对象
  */
 export function parseURLParams(url: string): ObjType {
   const _url = new URL(url);
@@ -37,7 +37,7 @@ export function parseURLParams(url: string): ObjType {
 }
 
 /**
- * @desc 将对象转换为url参数
+ * @description 将对象转换为url参数
  * @param params 需要转换的参数对象
  * @param encode {boolean} 转换结果是否编码，默认不编码
  */
@@ -50,7 +50,7 @@ export function stringifyURLParams(params: ObjType): string {
 }
 
 /**
- * @desc 是否为暗色模式
+ * @description 是否为暗色模式
  */
 export function isDarkMode(): boolean {
   return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;

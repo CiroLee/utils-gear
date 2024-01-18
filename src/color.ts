@@ -1,7 +1,7 @@
 import { extractHSL, extractRGB } from './color-utils';
 
 /**
- * @desc hex转rgb hex不能包含透明度
+ * @description hex转rgb hex不能包含透明度
  */
 export function hexToRgb(hex: string): number[] {
   // hex color regex
@@ -23,7 +23,7 @@ export function hexToRgb(hex: string): number[] {
 }
 
 /**
- * @desc rgb转hex, 透名度信息将丢弃
+ * @description rgb转hex, 透名度信息将丢弃
  */
 export function rgbToHex(rgb: string): string {
   let hex = '#';
@@ -39,7 +39,7 @@ export function rgbToHex(rgb: string): string {
   return hex;
 }
 /**
- * @desc rgb转hsl
+ * @description rgb转hsl
  * conversion formula is from https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_HSL
  */
 export function rgbToHsl(rgb: string): number[] {
@@ -80,7 +80,7 @@ export function rgbToHsl(rgb: string): number[] {
   return hsl.map((item, index) => (index === 3 ? item : Math.round(item)));
 }
 /**
- * @desc hsl转rgb
+ * @description hsl转rgb
  * conversion formula is from https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB
  */
 export function hslToRgb(hsl: string): number[] {
@@ -97,7 +97,7 @@ export function hslToRgb(hsl: string): number[] {
   return alpha ? [...hslVal, alpha] : hslVal;
 }
 /**
- * @desc 是否为深色, 根据hsl的l(lightness)判断
+ * @description 是否为深色, 根据hsl的l(lightness)判断
  */
 export function isDarkColor(color: string): boolean {
   const [, , lightness] = toHSL(color);
@@ -123,7 +123,7 @@ export function toHSL(color: string): number[] {
   return hsl;
 }
 /**
- * @desc 生成随机的16进制颜色
+ * @description 生成随机的16进制颜色
  * @returns string
  */
 export function randomHex(): string {

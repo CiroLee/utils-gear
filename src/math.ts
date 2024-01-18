@@ -1,7 +1,7 @@
 import { isAnyTrue, isAllTrue, isNumberLike } from '@src/validator';
 import { BaseType } from './types';
 /**
- * @desc 补零, 如果数字小于10，则在数字前补充0占位
+ * @description 补零, 如果数字小于10，则在数字前补充0占位
  */
 export function zeroFill(num: number | string): string {
   const invalidArr = [num === -Infinity, num === Infinity];
@@ -16,7 +16,7 @@ export function zeroFill(num: number | string): string {
 }
 
 /**
- * @desc 计算数组中的最大值
+ * @description 计算数组中的最大值
  * @param array {number[]} 待计算的数组
  */
 export function max(array: number[]): number {
@@ -28,7 +28,7 @@ export function max(array: number[]): number {
 }
 
 /**
- * @desc 计算数组中的最小值
+ * @description 计算数组中的最小值
  * @param array {number[]} 待计算的数组
  */
 export function min(array: number[]): number {
@@ -39,21 +39,21 @@ export function min(array: number[]): number {
   return Math.min(...array);
 }
 /**
- * @desc  计算两个基本数据类型数组的交集
+ * @description  计算两个基本数据类型数组的交集
  */
 export function intersection(a: BaseType[], b: BaseType[]): BaseType[] {
   const s = new Set(b);
   return [...new Set(a)].filter((x) => s.has(x));
 }
 /**
- * @desc 计算两个基础数据类型数组的并集
+ * @description 计算两个基础数据类型数组的并集
  */
 export function union(a: BaseType[], b: BaseType[]): BaseType[] {
   return [...new Set([...a, ...b])];
 }
 
 /**
- * @desc 从数组中选出n个不重复的数字
+ * @description 从数组中选出n个不重复的数字
  * @param array: number[] 待选取的数组
  * @param n: number 选取的数量
  * @return number[]
@@ -77,7 +77,7 @@ export function pickUniqueNumber(array: number[], n: number): number[] {
 }
 
 /**
- * @desc 随机打乱一个数组(fisher-yates洗牌算法)
+ * @description 随机打乱一个数组(fisher-yates洗牌算法)
  * @param array {T[]}
  */
 export function shuffle<T>(array: T[]): void {
@@ -96,7 +96,7 @@ export function shuffle<T>(array: T[]): void {
   }
 }
 /**
- * @desc 生成指定范围内的随机整数, 包含min,max
+ * @description 生成指定范围内的随机整数, 包含min,max
  * @param min {number} 范围最小值
  * @param max {number} 范围最大值
  * @note
@@ -118,7 +118,7 @@ export function randomInt(min: number, max?: number): number {
 }
 
 /**
- * @desc 计算数组的平均值
+ * @description 计算数组的平均值
  * @param array {number[]}
  */
 export function mean(array: number[]): number {
@@ -129,7 +129,7 @@ export function mean(array: number[]): number {
 }
 
 /**
- * @desc 求和
+ * @description 求和
  * @param array {number[]}
  */
 export function sum(array: number[]): number {
