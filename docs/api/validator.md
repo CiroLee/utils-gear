@@ -238,3 +238,22 @@ example:
 isQQNumber(123456789); // true
 isQQNumber('0123573'); // false
 ```
+
+## isSparseArray
+
+检查输入是否为稀疏数组
+
+signature:
+
+```ts
+function isSparseArray<T>(array: T): boolean;
+```
+
+example:
+
+```ts
+isSparseArray({}); // false
+isSparseArray([]); // false
+isSparseArray([1, 2, 3]); // false
+isSparseArray([1, 2, , 3]); // true
+```

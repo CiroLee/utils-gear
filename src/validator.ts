@@ -161,3 +161,17 @@ export function isQQNumber(qq: number | string): boolean {
   const regex = /^[1-9][0-9]{4,10}$/;
   return regex.test(`${qq}`);
 }
+/**
+ * @description 判断传入的参数是否为稀疏数组
+ * @param {T} array
+ * @returns {Boolean}
+ */
+export function isSparseArray<T = any>(array: T): boolean {
+  if (!Array.isArray(array)) return false;
+  for (let i = 0; i < array.length; i++) {
+    if (!(i in array)) {
+      return true;
+    }
+  }
+  return false;
+}
