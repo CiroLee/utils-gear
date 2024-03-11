@@ -68,3 +68,19 @@ $('input').addEventListener(
 );
 // 最多每250毫秒打印输入的内容
 ```
+
+## fillArray
+
+以任意长度值填充数组
+
+signature:
+
+```ts
+function fillArray<T>(value: T, length: number): T[]
+```
+
+example:
+
+```ts
+fillArray(1, 4); // [1,1,1,1]
+```

@@ -27,3 +27,12 @@ export function debounce(fn: Function, delay = 300) {
     timer = setTimeout(() => fn.apply(this, args), delay);
   };
 }
+/**
+ * @description 填充数组
+ * @param {T} value 填充数组的值
+ * @param {Number} length 数组长度
+ * @returns {T[]}
+ */
+export function fillArray<T>(value: T, length: number): T[] {
+  return new Array(length).fill(value);
+}

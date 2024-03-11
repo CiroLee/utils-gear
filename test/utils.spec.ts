@@ -61,3 +61,20 @@ describe('utils test', () => {
     }, 50);
   });
 });
+
+describe('fillArray test', () => {
+  it('fill an array, length equals 4', () => {
+    const arr = utils.fillArray(1, 4);
+    expect(arr.length).toBe(4);
+    expect(arr.every((item) => typeof item === 'number')).toBeTruthy();
+  });
+  it('fill an array, with invalid length, should throw error', () => {
+    expect(() => {
+      utils.fillArray(1, -1);
+    }).toThrow();
+  });
+  it('fill an array, length equals 0', () => {
+    const arr = utils.fillArray(1, 0);
+    expect(arr.length).toBe(0);
+  });
+});
