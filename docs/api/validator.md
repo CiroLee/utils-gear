@@ -11,7 +11,7 @@
 signature:
 
 ```typescript
-function isAnyTrue(arr: T[], fn?: (p: T) => boolean): boolean;
+function isAnyTrue<T = boolean>(arr: T[], fn?: (p: T) => boolean): boolean;
 ```
 
 example:
@@ -33,7 +33,7 @@ isAnyTrue(arr, function (num) {
 signature:
 
 ```typescript
-function isAllTrue(arr: T[], fn?: (p: T) => boolean): boolean;
+function isAllTrue<T = boolean>(arr: T[], fn?: (p: T) => boolean): boolean;
 ```
 
 example:
