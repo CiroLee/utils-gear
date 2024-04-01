@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a2 as t}from"./chunks/framework.wcHO_sVq.js";const y=JSON.parse('{"title":"number","description":"","frontmatter":{},"headers":[],"relativePath":"api/number.md","filePath":"api/number.md"}'),e={name:"api/number.md"},n=t("",14),h=[n];function p(r,k,l,c,d,o){return a(),i("div",null,h)}const E=s(e,[["render",p]]);export{y as __pageData,E as default};

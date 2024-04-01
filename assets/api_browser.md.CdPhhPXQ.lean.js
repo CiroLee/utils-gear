@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a2 as t}from"./chunks/framework.wcHO_sVq.js";const y=JSON.parse('{"title":"browser","description":"","frontmatter":{},"headers":[],"relativePath":"api/browser.md","filePath":"api/browser.md"}'),p={name:"api/browser.md"},e=t("",26),h=[e];function n(l,k,r,d,g,o){return a(),i("div",null,h)}const E=s(p,[["render",n]]);export{y as __pageData,E as default};
