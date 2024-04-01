@@ -1,6 +1,6 @@
 {
   "name": "utils-gear",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Like a gear, tiny and useful frontend function tools written in typescript",
   "browser": "lib/index.mjs",
   "types": "lib/index.d.mts",
@@ -15,23 +15,14 @@
     "test:unit": "jest --coverage"
   },
   "lint-staged": {
-    "src/**/*.{js,ts,tsx,json,md}": [
-      "eslint --config .eslintrc.js"
-    ]
+    "src/**/*.{js,ts,tsx,json,md}": ["eslint --config .eslintrc.js"]
   },
-  "keywords": [
-    "utils",
-    "frontend",
-    "gear",
-    "utils-gear"
-  ],
+  "keywords": ["utils", "frontend", "gear", "utils-gear"],
   "homepage": "https://github.com/CiroLee/utils-gear",
   "bugs": {
     "url": "https://github.com/CiroLee/utils-gear/issues"
   },
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "repository": {
     "type": "git",
     "url": "https://github.com/CiroLee/utils-gear.git"
