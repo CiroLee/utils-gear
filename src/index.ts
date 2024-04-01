@@ -7,6 +7,7 @@ export * from './string';
 export * from './storage';
 export * from './browser';
 export * from './number';
+export * from './array';
 export { hslToRgb, rgbToHsl, hexToRgb, rgbToHex, isDarkColor, randomHex } from './color';
 // export type file
 export * from './types';

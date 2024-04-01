@@ -231,3 +231,23 @@ describe('isQQNumber test', () => {
     expect(validator.isQQNumber('01235434')).toBeFalsy();
   });
 });
+
+describe('isSparseArray test', () => {
+  it('should return false with a non-array param', () => {
+    const result = validator.isSparseArray({});
+    expect(result).toBeFalsy();
+  });
+  it('should return false with a non-sparse array', () => {
+    const result = validator.isSparseArray([1, 2, null, undefined]);
+    expect(result).toBeFalsy();
+  });
+  it('should return false with a empty array', () => {
+    const result = validator.isSparseArray([]);
+    expect(result).toBeFalsy();
+  });
+  it('should return true with a sparse array', () => {
+    // eslint-disable-next-line no-sparse-arrays
+    const result = validator.isSparseArray([1, 2, , 3]);
+    expect(result).toBeTruthy();
+  });
+});

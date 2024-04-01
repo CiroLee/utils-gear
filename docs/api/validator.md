@@ -11,7 +11,7 @@
 signature:
 
 ```typescript
-function isAnyTrue(arr: T[], fn?: (p: T) => boolean): boolean;
+function isAnyTrue<T = boolean>(arr: T[], fn?: (p: T) => boolean): boolean;
 ```
 
 example:
@@ -33,7 +33,7 @@ isAnyTrue(arr, function (num) {
 signature:
 
 ```typescript
-function isAllTrue(arr: T[], fn?: (p: T) => boolean): boolean;
+function isAllTrue<T = boolean>(arr: T[], fn?: (p: T) => boolean): boolean;
 ```
 
 example:
@@ -237,4 +237,23 @@ example:
 ```ts
 isQQNumber(123456789); // true
 isQQNumber('0123573'); // false
+```
+
+## isSparseArray
+
+检查输入是否为稀疏数组
+
+signature:
+
+```ts
+function isSparseArray<T>(array: T): boolean;
+```
+
+example:
+
+```ts
+isSparseArray({}); // false
+isSparseArray([]); // false
+isSparseArray([1, 2, 3]); // false
+isSparseArray([1, 2, , 3]); // true
 ```

@@ -26,6 +26,10 @@ export default defineConfig({
             link: '/api/object.md',
           },
           {
+            text: 'array',
+            link: '/api/array.md',
+          },
+          {
             text: 'math',
             link: '/api/math.md',
           },
