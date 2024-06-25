@@ -127,7 +127,7 @@ export function encodeBase64(str: string): string {
 
 /**
  * @description 解码base64
- * @param {String} str
+ * @param {String} base64
  * @returns {String}
  */
 export function decodeBase64(base64: string): string {
@@ -137,4 +137,44 @@ export function decodeBase64(base64: string): string {
     uint8Array[i] = bytes.charCodeAt(i);
   }
   return new TextDecoder('utf-8').decode(uint8Array);
+}
+
+/**
+ * @description 统计字符串中指定字符出现的次数
+ * @param {String} str 目标字符串
+ * @param {String} char 指定字符
+ * @returns {Number}
+ */
+export function countChar(str: string, char: string): number {
+  if (typeof str !== 'string' || typeof char !== 'string') {
+    throw new Error('both arguments must be strings');
+  }
+  if (char.length !== 1) {
+    throw new Error('char argument must be a single character');
+  }
+  const escapedChar = char.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(escapedChar, 'g');
+  return (str.match(regex) || []).length;
+}
+
+/**
+ * @description 格式化字节数
+ * @param {String} bytes 需要格式化的字节数
+ * @param {Number} decimals 需要保留的精度，默认为2
+ * @returns {String}
+ */
+export function formatBytes(bytes: number, decimals: number = 2): string {
+  if (bytes < 0) {
+    return '-' + formatBytes(-bytes).replace('-', '');
+  }
+  if (bytes === 0) return '0Bytes';
+  if (bytes < 1 && bytes > 0) return parseFloat(bytes.toFixed(decimals)) + 'Bytes';
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + sizes[i];
 }

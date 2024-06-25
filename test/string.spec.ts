@@ -201,3 +201,44 @@ describe('encodeBase64 and decodeBase64 test', () => {
     expect(str.decodeBase64('aGVsbG8g8J+YgSDkuJbnlYw=')).toBe('hello 😁 世界');
   });
 });
+
+describe('countChar', () => {
+  it('counts occurrences of a character in a string', () => {
+    expect(str.countChar('hello world', 'o')).toBe(2);
+    expect(str.countChar('hello world', 'l')).toBe(3);
+    expect(str.countChar('hello world', 'z')).toBe(0);
+  });
+  it('counts occurrences of special characters', () => {
+    expect(str.countChar('a+b=c!', '=')).toBe(1);
+  });
+  it('throws Error if arguments are not strings', () => {
+    expect(() => str.countChar(123 as any, '1')).toThrow(Error);
+    expect(() => str.countChar('string', 1 as any)).toThrow(Error);
+    expect(() => str.countChar({} as any, 'o')).toThrow(Error);
+    expect(() => str.countChar('string', {} as any)).toThrow(Error);
+    expect(() => str.countChar('hello', 'll')).toThrow(Error);
+  });
+});
+
+describe('formatBytes', () => {
+  it('should format bytes to human-readable form', () => {
+    expect(str.formatBytes(1024)).toBe('1KB');
+    expect(str.formatBytes(1048576)).toBe('1MB');
+  });
+  it('should handle decimal places correctly', () => {
+    expect(str.formatBytes(1234.5678, 2)).toBe('1.21KB');
+    expect(str.formatBytes(5000, 3)).toBe('4.883KB');
+  });
+  it('should return "0 Bytes" for zero input', () => {
+    expect(str.formatBytes(0)).toBe('0Bytes');
+  });
+  it('should handle very small numbers gracefully', () => {
+    expect(str.formatBytes(0.001, 3)).toBe('0.001Bytes');
+  });
+  it('should handle negative byte values', () => {
+    expect(str.formatBytes(-1024)).toBe('-1KB');
+  });
+  it('decimals less than 0', () => {
+    expect(str.formatBytes(1024, -1)).toBe('1KB');
+  });
+});

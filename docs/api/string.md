@@ -204,11 +204,44 @@ encodeBase64('hello 😁 世界'); // aGVsbG8g8J+YgSDkuJbnlYw=
 signature:
 
 ```typescript
-function decodeBase64(str: string): string;
+function decodeBase64(base64: string): string;
 ```
 
 example:
 
 ```typescript
 decodeBase64('aGVsbG8g8J+YgSDkuJbnlYw='); // hello 😁 世界
+```
+
+## countChar
+
+统计字符串中指定字符出现的次数
+
+signature:
+
+```ts
+function countChar(str: string, char: string): number;
+```
+
+example:
+
+```ts
+countChar('hello world', 'o'); // 2
+```
+
+## formateBytes
+
+格式化字节数
+
+signature:
+
+```ts
+function formatBytes(bytes: number, decimals: number = 2): string;
+```
+
+example:
+
+```ts
+formatBytes(1024); // 1KB
+formatBytes(1048576); // 1MB
 ```
