@@ -51,3 +51,54 @@ describe('sortArrayByField', () => {
     expect(arr.sortArrayByField(items, 'id', false)).toEqual([{ id: 3 }, { id: 2 }, { id: 1 }]);
   });
 });
+
+describe('groupBy', () => {
+  type Person = { name: string; age: number; gender: string };
+
+  const people: Person[] = [
+    { name: 'Alice', age: 30, gender: 'female' },
+    { name: 'Bob', age: 30, gender: 'male' },
+    { name: 'Charlie', age: 25, gender: 'male' },
+    { name: 'David', age: 25, gender: 'male' },
+    { name: 'Eve', age: 35, gender: 'female' },
+  ];
+  test('groups by a key name', () => {
+    const groupedByAge = arr.groupBy(people, 'age');
+    expect(groupedByAge).toEqual({
+      '30': [
+        { name: 'Alice', age: 30, gender: 'female' },
+        { name: 'Bob', age: 30, gender: 'male' },
+      ],
+      '25': [
+        { name: 'Charlie', age: 25, gender: 'male' },
+        { name: 'David', age: 25, gender: 'male' },
+      ],
+      '35': [{ name: 'Eve', age: 35, gender: 'female' }],
+    });
+  });
+  test('groups by a custom function', () => {
+    const groupedByGender = arr.groupBy(people, (person) => person.gender);
+    expect(groupedByGender).toEqual({
+      female: [
+        { name: 'Alice', age: 30, gender: 'female' },
+        { name: 'Eve', age: 35, gender: 'female' },
+      ],
+      male: [
+        { name: 'Bob', age: 30, gender: 'male' },
+        { name: 'Charlie', age: 25, gender: 'male' },
+        { name: 'David', age: 25, gender: 'male' },
+      ],
+    });
+  });
+  test('handles array of primitive types', () => {
+    const numbers = [1, 2, 3, 4, 5, 6];
+
+    // Group numbers by whether they are even or odd
+    const groupedByEvenOdd = arr.groupBy(numbers, (num) => (num % 2 === 0 ? 'even' : 'odd'));
+
+    expect(groupedByEvenOdd).toEqual({
+      odd: [1, 3, 5],
+      even: [2, 4, 6],
+    });
+  });
+});
