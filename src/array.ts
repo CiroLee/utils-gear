@@ -33,3 +33,26 @@ export function sortArrayByField<T>(objectArray: T[], field: keyof T, ascending 
     return ascending ? Number(valueA) - Number(valueB) : Number(valueB) - Number(valueA);
   });
 }
+
+/**
+ * @description 对象数组分类
+ * @param {Array<T>} arr 待处理数组
+ * @param {Function | keyof T} iterate 过滤函数或键名
+ */
+// eslint-disable-next-line no-unused-vars
+export function groupBy<T, K extends keyof T | ((item: T) => string | number | boolean)>(
+  arr: T[],
+  iterate?: K,
+): Record<string, T[]> {
+  return arr.reduce(
+    (acc, curr) => {
+      const key = typeof iterate === 'function' ? iterate(curr) : (curr[iterate as keyof T] as unknown as K);
+      if (!acc[key as string]) {
+        acc[key as string] = [];
+      }
+      acc[key as string].push(curr);
+      return acc;
+    },
+    {} as Record<string, T[]>,
+  );
+}
