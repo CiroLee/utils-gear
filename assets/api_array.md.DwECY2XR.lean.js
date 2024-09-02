@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a2 as h}from"./chunks/framework.wcHO_sVq.js";const o=JSON.parse('{"title":"array","description":"","frontmatter":{},"headers":[],"relativePath":"api/array.md","filePath":"api/array.md"}'),t={name:"api/array.md"},n=h("",14),l=[n];function k(p,e,r,d,E,y){return a(),i("div",null,l)}const F=s(t,[["render",k]]);export{o as __pageData,F as default};
