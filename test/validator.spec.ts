@@ -251,3 +251,9 @@ describe('isSparseArray test', () => {
     expect(result).toBeTruthy();
   });
 });
+
+describe('isPrimitive test', () => {
+  it('should return true for primitive types', () => {
+    expect(validator.isPrimitive(null)).toBeTruthy();
+  });
+});

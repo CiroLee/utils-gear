@@ -1,7 +1,7 @@
 import { TimeUintMap } from './constants';
 export type Nullish = null | undefined;
 export type ObjType = Record<string | number | symbol, any>;
-export type BaseType = number | string | null | undefined | boolean | symbol;
+export type BaseType = number | string | null | undefined | boolean | symbol | bigint;
 export type TimeUnit = keyof typeof TimeUintMap;
 export interface CookieParam {
   name: string; // 名称

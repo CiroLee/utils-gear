@@ -1,3 +1,6 @@
+import { deepClone } from './utils';
+import { isAllTrue, isPrimitive } from './validator';
+
 /**
  * @description 填充数组
  * @param {T} value 填充数组的值
@@ -55,4 +58,16 @@ export function groupBy<T, K extends keyof T | ((item: T) => string | number | b
     },
     {} as Record<string, T[]>,
   );
+}
+/**
+ * @description 反转数组，返回一个新数组
+ * @param {Array} array
+ * @returns {Array}
+ */
+export function reverse<T>(array: T[]): T[] {
+  if (isAllTrue(array, isPrimitive)) {
+    return [...array].reverse();
+  }
+  const cloned = deepClone<T>(array);
+  return cloned.reverse();
 }

@@ -257,3 +257,20 @@ isSparseArray([]); // false
 isSparseArray([1, 2, 3]); // false
 isSparseArray([1, 2, , 3]); // true
 ```
+
+## isPrimitive
+
+判断值是否为原始类型
+
+signature:
+
+```ts
+function isPrimitive(value: unknown): boolean;
+```
+
+example:
+
+```ts
+isPrimitive(1); // true
+isPrimitive([1]); // false
+```

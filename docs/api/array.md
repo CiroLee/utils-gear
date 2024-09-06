@@ -82,3 +82,20 @@ const groupedByEvenOdd = arr.groupBy(numbers, (num) => (num % 2 === 0 ? 'even' :
   even: [2, 4, 6],
 }
 ```
+
+## reverse
+
+反转数组，返回新数组，不会改变原数组
+
+signature:
+
+```ts
+function reverse<T>(arr: T[]): T[];
+```
+
+example:
+
+```ts
+const arr = [1, 2, 3, 4, 5];
+reverse(arr); // [5, 4, 3, 2, 1]
+```
