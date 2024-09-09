@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  * @description 获取数据类型
  */
@@ -26,4 +27,20 @@ export function debounce(fn: Function, delay = 300) {
     clearTimeout(timer);
     timer = setTimeout(() => fn.apply(this, args), delay);
   };
+}
+
+/**
+ * @description 深拷贝 默认使用structuredClone，不支持则使用JSON.parse, JSON.stringify转换
+ * @param {Object | Array} value 需要深拷贝的数据
+ * @returns {Object | Array}
+ */
+export function deepClone<T>(value: Record<string | number | symbol, T>): Record<string | number | symbol, T>;
+export function deepClone<T>(value: T[]): T[];
+export function deepClone<T>(
+  value: Record<string | number | symbol, T> | T[],
+): Record<string | number | symbol, T> | T[] {
+  if (typeof structuredClone === 'function') {
+    return structuredClone(value);
+  }
+  return JSON.parse(JSON.stringify(value));
 }

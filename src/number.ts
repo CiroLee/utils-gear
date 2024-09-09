@@ -60,7 +60,6 @@ export function convertToZhCurrency(currency: number): string {
 
   chineseCurrency = chineseCurrency.replace(/零+$/, '');
 
-  console.log(chineseCurrency);
   // 小数部分
   if (decimalPart !== '') {
     chineseCurrency += '元';

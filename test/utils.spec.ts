@@ -61,3 +61,57 @@ describe('utils test', () => {
     }, 50);
   });
 });
+
+describe('utils.deepClone', () => {
+  it('should clone an object correctly using structuredClone if available', () => {
+    const original = { a: 1, b: { c: 2 } };
+
+    // 模拟 structuredClone 存在
+    const mockStructuredClone = jest.fn().mockImplementation((value) => value);
+    global.structuredClone = mockStructuredClone;
+
+    const clone = utils.deepClone(original);
+
+    expect(mockStructuredClone).toHaveBeenCalledWith(original);
+    expect(clone).toEqual(original);
+  });
+
+  it('should clone an object correctly using JSON if structuredClone is not available', () => {
+    const original = { a: 1, b: { c: 2 } };
+
+    //@ts-ignore
+    global.structuredClone = undefined;
+
+    const clone = utils.deepClone(original);
+
+    expect(clone).toEqual(original);
+    expect(clone).not.toBe(original); // 检查是否是深拷贝
+  });
+
+  it('should clone an array correctly', () => {
+    const original = [1, 2, { a: 3 }];
+
+    const clone = utils.deepClone(original);
+
+    expect(clone).toEqual(original);
+    expect(clone).not.toBe(original); // 检查是否是深拷贝
+  });
+
+  it('should handle an empty object', () => {
+    const original = {};
+
+    const clone = utils.deepClone(original);
+
+    expect(clone).toEqual(original);
+    expect(clone).not.toBe(original);
+  });
+
+  it('should handle an empty array', () => {
+    const original: any[] = [];
+
+    const clone = utils.deepClone(original);
+
+    expect(clone).toEqual(original);
+    expect(clone).not.toBe(original);
+  });
+});

@@ -1,3 +1,4 @@
+import { getPlatformType } from './browser';
 import { ObjType } from './types';
 import { getType } from './utils';
 /**
@@ -174,4 +175,24 @@ export function isSparseArray<T = any>(array: T): boolean {
     }
   }
   return false;
+}
+
+/**
+ * @description 判断传入的参数是否为原始类型
+ * @param {Unknown} value
+ * @returns {Boolean}
+ */
+export function isPrimitive(value: unknown): boolean {
+  const types = ['string', 'number', 'boolean', 'undefined', 'symbol', 'bigint', 'null'];
+  return types.includes(getType(value));
+}
+
+/**
+ * @description 判断设备是否为手机端
+ * @returns {Boolean}
+ */
+export function isMobile(): boolean {
+  const platform = getPlatformType();
+  console.log(platform);
+  return ['Android', 'iPhone'].includes(platform);
 }

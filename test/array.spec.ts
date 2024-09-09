@@ -102,3 +102,16 @@ describe('groupBy', () => {
     });
   });
 });
+
+describe('reverse test', () => {
+  it('reverse an array of primitive elements', () => {
+    const array = [1, 2, 3, 4, 5];
+    expect(arr.reverse(array)).toEqual([5, 4, 3, 2, 1]);
+    expect(array).toEqual([1, 2, 3, 4, 5]);
+  });
+  it('reverse an array of objects', () => {
+    const array = [{ a: 1 }, { a: 2 }, { a: 3 }];
+    expect(arr.reverse(array)).toEqual([{ a: 3 }, { a: 2 }, { a: 1 }]);
+    expect(array).toEqual([{ a: 1 }, { a: 2 }, { a: 3 }]);
+  });
+});

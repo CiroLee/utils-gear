@@ -68,3 +68,21 @@ $('input').addEventListener(
 );
 // 最多每250毫秒打印输入的内容
 ```
+
+## deepClone
+
+深拷贝。默认使用`structuredClone`，如果`structuredClone`不可用，则使用`JSON.parse(JSON.stringify())`。
+
+signature:
+
+```ts
+function deepClone<T>(value: Record<string | number | symbol, T> | T[]): Record<string | number | symbol, T> | T[];
+```
+
+example:
+
+```ts
+const obj = { a: 1, b: 2 };
+const cloneObj = deepClone(obj);
+Object.is(obj, cloneObj); // false
+```
