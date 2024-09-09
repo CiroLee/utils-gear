@@ -274,3 +274,18 @@ example:
 isPrimitive(1); // true
 isPrimitive([1]); // false
 ```
+
+## isMobile
+
+判断当前浏览器环境是否为手机端signature:
+
+```ts
+function isMobile(): boolean;
+```
+
+example:
+
+```ts
+// in mobile browser
+isMobile(); // true
+```

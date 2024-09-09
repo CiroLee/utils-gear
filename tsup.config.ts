@@ -4,7 +4,7 @@ export default defineConfig((options: Options) => {
   return {
     entry: ['src/index.ts'],
     outDir: 'lib',
-    format: ['esm'],
+    format: ['esm', 'cjs'],
     dts: true,
     minify: !options.watch,
     watch: options.watch,

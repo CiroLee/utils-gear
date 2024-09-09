@@ -257,3 +257,36 @@ describe('isPrimitive test', () => {
     expect(validator.isPrimitive(null)).toBeTruthy();
   });
 });
+
+describe('isMobile test', () => {
+  let originalUserAgent: string;
+  beforeAll(() => {
+    originalUserAgent = window.navigator.userAgent;
+  });
+  afterAll(() => {
+    // 测试结束后恢复原始userAgent
+    Object.defineProperty(navigator, 'userAgent', {
+      value: originalUserAgent,
+      configurable: true,
+    });
+  });
+
+  const setUserAgent = (ua: string) => {
+    Object.defineProperty(navigator, 'userAgent', {
+      value: ua,
+      configurable: true,
+    });
+  };
+  it('should return true for ua includes "iPhone"', () => {
+    setUserAgent(
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
+    );
+    expect(validator.isMobile()).toBeTruthy();
+  });
+  it('should return false for ua not includes mobile symbol', () => {
+    setUserAgent(
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+    );
+    expect(validator.isMobile()).toBeFalsy();
+  });
+});

@@ -6,12 +6,12 @@
 
 ## getPlatformType
 
-通过userAgent获取常用平台类型
+通过userAgent获取常用平台类型。userAgent 可选，默认为当前浏览器 userAgent
 
 signature:
 
 ```typescript
-function getPlatformType(ua: string): PlatformType;
+function getPlatformType(ua?: string): PlatformType;
 ```
 
 ```typescript
@@ -21,8 +21,7 @@ type PlatformType = 'iPhone' | 'iPad' | 'Android' | 'Windows' | 'macOS' | 'Linux
 example:
 
 ```typescript
-const ua = window.navigator.userAgent;
-getPlatformType(ua); // 'macOS'
+getPlatformType(); //  eg:'macOS'
 ```
 
 ## parseURLParams

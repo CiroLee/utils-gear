@@ -3,7 +3,8 @@ import type { ObjType, PlatformType } from './types';
  * @description 通过userAgent获取常用平台类型
  * @param ua {String} userAgent
  */
-export function getPlatformType(ua: string): PlatformType {
+export function getPlatformType(ua?: string): PlatformType {
+  const userAgent = ua || navigator.userAgent;
   const platformMatchers = [
     { type: 'iPhone', regex: /\b(iPhone)\b/i },
     { type: 'iPad', regex: /\b(iPad)\b/i },
@@ -14,7 +15,7 @@ export function getPlatformType(ua: string): PlatformType {
   ];
 
   for (const matcher of platformMatchers) {
-    if (matcher.regex.test(ua)) {
+    if (matcher.regex.test(userAgent)) {
       return matcher.type as PlatformType;
     }
   }

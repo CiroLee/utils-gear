@@ -1,39 +1,63 @@
 /* eslint-disable max-len */
 import * as browser from '@src/browser';
-describe('browser.getPlatformType', () => {
+describe('getPlatformType test', () => {
+  let originalUserAgent: string;
+  beforeAll(() => {
+    originalUserAgent = window.navigator.userAgent;
+  });
+  afterAll(() => {
+    // 测试结束后恢复原始userAgent
+    Object.defineProperty(navigator, 'userAgent', {
+      value: originalUserAgent,
+      configurable: true,
+    });
+  });
+
+  const setUserAgent = (ua: string) => {
+    Object.defineProperty(navigator, 'userAgent', {
+      value: ua,
+      configurable: true,
+    });
+  };
   it('should correctly identify Windows platform', () => {
-    const userAgent =
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3';
-    expect(browser.getPlatformType(userAgent)).toBe('Windows');
+    setUserAgent(
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+    );
+    expect(browser.getPlatformType()).toBe('Windows');
   });
 
   it('should correctly identify macOS platform', () => {
-    const userAgent =
-      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36';
-    expect(browser.getPlatformType(userAgent)).toBe('macOS');
+    setUserAgent(
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36',
+    );
+    expect(browser.getPlatformType()).toBe('macOS');
   });
 
   it('should correctly identify Android platform', () => {
-    const userAgent =
-      'Mozilla/5.0 (Linux; Android 10; SM-A205U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36';
-    expect(browser.getPlatformType(userAgent)).toBe('Android');
+    setUserAgent(
+      'Mozilla/5.0 (Linux; Android 10; SM-A205U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36',
+    );
+    expect(browser.getPlatformType()).toBe('Android');
   });
 
   it('should correctly identify iOS platform', () => {
-    const userAgent =
-      'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1';
-    expect(browser.getPlatformType(userAgent)).toBe('iPhone');
+    setUserAgent(
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1',
+    );
+
+    expect(browser.getPlatformType()).toBe('iPhone');
   });
 
   it('should correctly identify Linux platform', () => {
-    const userAgent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0';
-    expect(browser.getPlatformType(userAgent)).toBe('Linux');
+    setUserAgent('Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0');
+    expect(browser.getPlatformType()).toBe('Linux');
   });
 
   it('should correctly identify iPad platform', () => {
-    const userAgent =
-      'Mozilla/5.0 (iPad; CPU OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1';
-    expect(browser.getPlatformType(userAgent)).toBe('iPad');
+    setUserAgent(
+      'Mozilla/5.0 (iPad; CPU OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1',
+    );
+    expect(browser.getPlatformType()).toBe('iPad');
   });
 
   it('should return an empty string for unknown platform', () => {
