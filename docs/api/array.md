@@ -99,3 +99,18 @@ example:
 const arr = [1, 2, 3, 4, 5];
 reverse(arr); // [5, 4, 3, 2, 1]
 ```
+
+## flatArray
+
+扁平化数组，可指定深度, 默认为全部展开(Infinity) .  
+signature:
+
+```ts
+function flatArray<T>(array: T[], deep = Infinity): T extends any[] ? T[number] : T;
+```
+
+example:
+
+```ts
+flatArray([1, [2, [3, [4, [5]]]]], 2); // [1, 2, 3, [4, [5]]]
+```
