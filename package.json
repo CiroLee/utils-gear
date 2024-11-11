@@ -1,5 +1,5 @@
 {
-  "name": "utils-gear",
+  "name": "@cirolee/utils-gear",
   "version": "1.2.8",
   "description": "Like a gear, tiny and useful frontend function tools written in typescript",
   "main": "lib/index.js",
