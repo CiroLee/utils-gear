@@ -115,3 +115,21 @@ describe('reverse test', () => {
     expect(array).toEqual([{ a: 1 }, { a: 2 }, { a: 3 }]);
   });
 });
+
+describe('flatArray', () => {
+  it('flatten an array with deep 1', () => {
+    const array = [1, 2, 3, [4, 5, [6, 7]]];
+    const result = arr.flatArray(array, 1);
+    expect(result).toEqual([1, 2, 3, 4, 5, [6, 7]]);
+  });
+  it('flatten an array with default deep, will flat all', () => {
+    const array = [1, 2, 3, [4, 5, [6, 7]]];
+    const result = arr.flatArray(array);
+    expect(result).toEqual([1, 2, 3, 4, 5, 6, 7]);
+  });
+  it('flatten an array with invalid deep', () => {
+    const array = [1, 2, 3, [4, 5]];
+    const result = arr.flatArray(array, -1);
+    expect(result).toEqual([1, 2, 3, [4, 5]]);
+  });
+});

@@ -71,3 +71,17 @@ export function reverse<T>(array: T[]): T[] {
   const cloned = deepClone<T>(array);
   return cloned.reverse();
 }
+
+/**
+ * @description 扁平化数组，对数组进行深拷贝操作, 默认为展开全部, 即deep = Infinity
+ * @param {T[]} array
+ * @param deep 展开深度, 默认为Infinity
+ * @returns {T}
+ */
+export function flatArray<T>(array: T[], deep = Infinity): T extends any[] ? T[number] : T {
+  const cloned = deepClone<T>(array);
+  if (deep <= 0) {
+    return cloned as T extends any[] ? T[number] : T;
+  }
+  return cloned.flat(deep) as T extends any[] ? T[] : T;
+}
