@@ -15,7 +15,7 @@
 npm
 
 ```shell
-npm install utils-gear
+npm install @cirolee/utils-gear
 ```
 
 ## 使用
