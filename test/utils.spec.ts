@@ -1,36 +1,72 @@
 import * as utils from '@src/utils';
 
-describe('utils test', () => {
-  test('GETTYPE: undefined type', () => {
+describe('getType', () => {
+  test('undefined type', () => {
     expect(utils.getType()).toBe('undefined');
   });
-  test('GETTYPE: null type', () => {
+  test('null type', () => {
     expect(utils.getType(null)).toBe('null');
   });
-  test('GETTYPE: number type', () => {
+  test('NaN type', () => {
+    expect(utils.getType(NaN)).toBe('nan');
+  });
+  test('number type', () => {
     expect(utils.getType(123)).toBe('number');
   });
-  test('GETTYPE: boolean type', () => {
+  test('boolean type', () => {
     expect(utils.getType(false)).toBe('boolean');
   });
-  test('GETTYPE: string type', () => {
+  test('string type', () => {
     expect(utils.getType('use-utils')).toBe('string');
   });
-  test('GETTYPE: Array type', () => {
+  test('Array type', () => {
     expect(utils.getType([])).toBe('array');
   });
-  test('GETYPE: Object type', () => {
+  test('Object type', () => {
     expect(utils.getType({})).toBe('object');
   });
-  test('GETTYPE: Function type', () => {
+  test('Function type', () => {
     expect(
       utils.getType(() => {
         console.log(123);
       }),
     ).toBe('function');
   });
-  test('GETTYPE: Date type', () => {
+  test('Date type', () => {
     expect(utils.getType(new Date('2022'))).toBe('date');
+  });
+  test('HTMLElement type', () => {
+    document.body.innerHTML = '<div id="test"></div>';
+    const element = document.getElementById('test');
+    if (element) {
+      expect(utils.getType(element)).toBe('element');
+    }
+  });
+  test('RegExp type', () => {
+    expect(utils.getType(/abc/)).toBe('regexp');
+  });
+  test('Map type', () => {
+    expect(utils.getType(new Map())).toBe('map');
+  });
+  test('Set type', () => {
+    expect(utils.getType(new Set())).toBe('set');
+  });
+  test('WeakMap type', () => {
+    expect(utils.getType(new WeakMap())).toBe('weakmap');
+  });
+  test('WeakSet type', () => {
+    expect(utils.getType(new WeakSet())).toBe('weakset');
+  });
+  test('Error type', () => {
+    expect(utils.getType(new Error())).toBe('error');
+  });
+  test('BigInt type', () => {
+    expect(utils.getType(BigInt(123))).toBe('bigint');
+  });
+  test('custom class type will return object', () => {
+    class CustomClass {}
+    const customInstance = new CustomClass();
+    expect(utils.getType(customInstance)).toBe('object');
   });
   test('THROTTLE: throttle test', (done) => {
     const mockFn = jest.fn();

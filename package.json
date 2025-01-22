@@ -1,6 +1,6 @@
 {
   "name": "@cirolee/utils-gear",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "Like a gear, tiny and useful frontend function tools written in typescript",
   "main": "lib/index.js",
   "browser": "lib/index.mjs",

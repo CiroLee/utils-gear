@@ -2,8 +2,45 @@
 /**
  * @description 获取数据类型
  */
+const typeMap: { [key: string]: string } = {
+  Array: 'array',
+  RegExp: 'regexp',
+  Date: 'date',
+  Map: 'map',
+  Set: 'set',
+  WeakMap: 'weakmap',
+  WeakSet: 'weakset',
+  Error: 'error',
+  BigInt: 'bigint',
+  Element: 'element',
+};
+
 export function getType(v?: any): string {
-  return Object.prototype.toString.call(v).slice(8, -1).toLowerCase();
+  if (v === null) return 'null';
+  if (v === undefined) return 'undefined';
+  if (Number.isNaN(v)) return 'nan';
+
+  const type = typeof v;
+  if (type !== 'object') return type; // 处理原始类型
+
+  // 使用更底层的 `Object.prototype.toString` 并规避 Symbol.toStringTag 的干扰
+  const rawType = Object.prototype.toString
+    .call(Object.getPrototypeOf(v) || v)
+    .slice(8, -1)
+    .toLowerCase();
+
+  // 检查是否为 DOM 元素
+  if (typeof HTMLElement === 'function' && v instanceof HTMLElement) return 'element';
+
+  // 使用类型映射对象进行类型检测
+  for (const [typeName, typeValue] of Object.entries(typeMap)) {
+    // 兼容node环境和browser环境
+    const typeConstructor =
+      typeof window !== 'undefined' ? (window as any)[typeName] : globalThis[typeName as keyof typeof globalThis];
+    if (typeof typeConstructor === 'function' && v instanceof typeConstructor) return typeValue;
+  }
+
+  return rawType;
 }
 
 /**

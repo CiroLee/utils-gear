@@ -22,6 +22,12 @@ getType('1'); // 'string'
 getType({}); // 'object'
 getType(() => null); // 'function'
 getType(null); // 'null'
+getType(NaN); // 'nan'
+getType(new Set()); // 'set'
+getType(new Map()); // 'map'
+getType(new Date()); // 'date'
+getType(new RegExp('')); // 'regexp'
+getType(new Error('error')); // 'error'
 ```
 
 ## throttle
