@@ -8,13 +8,13 @@
 
 signature:
 
-```ts
+```typescript
 function fillArray<T>(value: T, length: number): T[];
 ```
 
 example:
 
-```ts
+```typescript
 fillArray(1, 4); // [1,1,1,1]
 ```
 
@@ -24,13 +24,13 @@ fillArray(1, 4); // [1,1,1,1]
 
 signature:
 
-```ts
+```typescript
 function sortArrayByField<T>(arr: T[], field: keyof T, ascending = true): T[];
 ```
 
 example:
 
-```ts
+```typescript
 const items = [{ id: 2 }, { id: 3 }, { id: 1 }];
 sortArrayByField(items, 'id'); // [{ id: 1 }, { id: 2 }, { id: 3 }]s
 const names = [{ name: 'John' }, { name: 'Alice' }, { name: 'Bob' }];
@@ -39,18 +39,19 @@ sortArrayByField(names, 'name', false); // [{ name: 'Alice' }, { name: 'Bob' }, 
 
 ## groupBy
 
-对象数组排序。iterate可以是对象的key也可以是自定义函数
+对象数组排序。iterate可以是对象的key也可以是自定义函数。  
+signature:
 
-```ts
+```typescript
 function groupBy<T, K extends keyof T | ((item: T) => string | number | boolean)>(
   arr: T[],
   iterate?: K,
 ): Record<string, T[]>;
 ```
 
-example
+example:
 
-```ts
+```typescript
 type Person = { name: string; age: number; gender: string };
 
 const people: Person[] = [
@@ -89,13 +90,13 @@ const groupedByEvenOdd = arr.groupBy(numbers, (num) => (num % 2 === 0 ? 'even' :
 
 signature:
 
-```ts
+```typescript
 function reverse<T>(arr: T[]): T[];
 ```
 
 example:
 
-```ts
+```typescript
 const arr = [1, 2, 3, 4, 5];
 reverse(arr); // [5, 4, 3, 2, 1]
 ```
@@ -105,12 +106,12 @@ reverse(arr); // [5, 4, 3, 2, 1]
 扁平化数组，可指定深度, 默认为全部展开(Infinity) .  
 signature:
 
-```ts
+```typescript
 function flatArray<T>(array: T[], deep = Infinity): T extends any[] ? T[number] : T;
 ```
 
 example:
 
-```ts
+```typescript
 flatArray([1, [2, [3, [4, [5]]]]], 2); // [1, 2, 3, [4, [5]]]
 ```

@@ -219,13 +219,13 @@ decodeBase64('aGVsbG8g8J+YgSDkuJbnlYw='); // hello 😁 世界
 
 signature:
 
-```ts
+```typescript
 function countChar(str: string, char: string): number;
 ```
 
 example:
 
-```ts
+```typescript
 countChar('hello world', 'o'); // 2
 ```
 
@@ -235,13 +235,13 @@ countChar('hello world', 'o'); // 2
 
 signature:
 
-```ts
+```typescript
 function formatBytes(bytes: number, decimals: number = 2): string;
 ```
 
 example:
 
-```ts
+```typescript
 formatBytes(1024); // 1KB
 formatBytes(1048576); // 1MB
 ```

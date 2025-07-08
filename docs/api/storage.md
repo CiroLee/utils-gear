@@ -33,7 +33,7 @@ Storage.get(key: string, ignoreExpire: boolean): ObjType | BaseType | undefined
 
 example:
 
-```
+```typescript
 // set
 Storage.set('test', 123); // 不设置过期时间
 Storage.get('test'); // 默认校验过期时间，因此返回null

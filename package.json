@@ -1,6 +1,6 @@
 {
   "name": "@cirolee/utils-gear",
-  "version": "1.2.9",
+  "version": "1.3.0",
   "description": "Like a gear, tiny and useful frontend function tools written in typescript",
   "main": "lib/index.js",
   "browser": "lib/index.mjs",
@@ -56,6 +56,6 @@
     "ts-jest": "^29.1.2",
     "tsup": "^8.0.2",
     "typescript": "^5.4.3",
-    "vitepress": "1.3.4"
+    "vitepress": "1.6.3"
   }
 }

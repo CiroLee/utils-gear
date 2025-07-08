@@ -1,3 +1,10 @@
+type NumberFormatStyle = 'decimal' | 'percent' | 'currency' | 'unit';
+type CurrencyDisplay = 'symbol' | 'code' | 'name' | 'narrowSymbol';
+type NotationType = 'standard' | 'scientific' | 'engineering' | 'compact';
+type UnitDisplay = 'long' | 'short' | 'narrow';
+type SignDisplay = 'auto' | 'never' | 'always' | 'exceptZero';
+type CompactDisplay = 'short' | 'long';
+
 function convertSection(section: string, chineseNumbers: string[], unit: string[]): string {
   let sectionStr = '';
   let lastNonZero = false; // 用于标记上一个非零数字
@@ -84,12 +91,162 @@ export function convertToZhCurrency(currency: number): string {
   return (isNegative ? '负' : '') + chineseCurrency;
 }
 
+interface NumberFormatConfig {
+  /** 用于格式化的语言环境 */
+  locale?: string | string[];
+  /** 数字的显示样式 */
+  style?: NumberFormatStyle;
+  /** 货币格式化的货币代码 */
+  currency?: string;
+  /** 单位格式化的单位标识符 */
+  unit?: string;
+  /** 如何显示货币信息 */
+  currencyDisplay?: CurrencyDisplay;
+  /** 如何显示单位信息 */
+  unitDisplay?: UnitDisplay;
+  /** 最小小数位数 */
+  minimumFractionDigits?: number;
+  /** 最大小数位数 */
+  maximumFractionDigits?: number;
+  /** 是否使用分组分隔符 */
+  useGrouping?: boolean;
+  /** 数字表示格式 */
+  notation?: NotationType;
+  /** 紧凑显示格式 */
+  compactDisplay?: CompactDisplay;
+  /** 如何显示负号 */
+  signDisplay?: SignDisplay;
+}
+
+/** 创建数字格式化器的缓存 */
+type FormatterCache = Record<string, Intl.NumberFormat>;
+
+/** 创建缓存键 */
+function generateCacheKey(locale?: string | string[], options?: Intl.NumberFormatOptions): string {
+  const localePart = Array.isArray(locale) ? locale.join(',') : locale || 'default';
+  const optionsPart = options ? JSON.stringify(options) : 'no-options';
+  return `${localePart}|${optionsPart}`;
+}
+
+/** 模块中的缓存 */
+const cache: FormatterCache = {};
+
 /**
- * @description 根据指定的货币格式将数字转换为金额
- * @param {String} currency  货币名称简写 参考: https://en.wikipedia.org/wiki/ISO_4217#List_of_ISO_4217_currency_codes
- * @param {String} langFormat 语言格式 参考: https://www.techonthenet.com/js/language_tags.php
- * @returns {String}
+ * 格式化数字、货币或单位
+ * @param value 目标数字
+ * @param config 配置对象
+ * @returns 格式化后的字符串
  */
-export function toCurrency(num: number, currency: string, langFormat?: string): string {
-  return Intl.NumberFormat(langFormat, { style: 'currency', currency }).format(num);
+export function formatNumber(value: number, config: NumberFormatConfig = {}): string {
+  const {
+    locale,
+    style = 'decimal',
+    currency,
+    unit,
+    currencyDisplay = 'symbol',
+    unitDisplay = 'short',
+    minimumFractionDigits,
+    maximumFractionDigits,
+    useGrouping = true,
+    notation,
+    compactDisplay,
+    signDisplay,
+  } = config;
+
+  const options: Intl.NumberFormatOptions = {
+    style,
+    ...(style === 'currency' && currency && { currency }),
+    ...(style === 'currency' && { currencyDisplay }),
+    ...(style === 'unit' && unit && { unit }),
+    ...(unitDisplay && { unitDisplay }),
+    ...(minimumFractionDigits !== undefined && { minimumFractionDigits }),
+    ...(maximumFractionDigits !== undefined && { maximumFractionDigits }),
+    useGrouping,
+    ...(notation && { notation }),
+    ...(compactDisplay && { compactDisplay }),
+    ...(signDisplay && { signDisplay }),
+  };
+
+  const cacheKey = generateCacheKey(locale, options);
+
+  // use cache or create a new instance
+  if (!cache[cacheKey]) {
+    cache[cacheKey] = new Intl.NumberFormat(locale, options);
+  }
+
+  return cache[cacheKey].format(value);
+}
+
+/**
+ * 货币格式化
+ * @param value 目标值
+ * @param currency 货币代码 (ISO 4217)
+ * @param locale 语言环境
+ * @param options 其他配置 (省略 style 和 currency)
+ */
+export function formatCurrency(
+  value: number,
+  currency: string,
+  locale?: string | string[],
+  options?: Omit<NumberFormatConfig, 'style' | 'currency'>,
+): string {
+  return formatNumber(value, {
+    ...options,
+    locale,
+    style: 'currency',
+    currency,
+  });
+}
+
+/**
+ * 百分比格式化器
+ * @param value 目标值（介于 0 和 1 之间）
+ * @param locale 语言环境配置
+ * @param options 其他配置（省略 style）
+ */
+export function formatPercent(
+  value: number,
+  locale?: string | string[],
+  options?: Omit<NumberFormatConfig, 'style'>,
+): string {
+  return formatNumber(value, {
+    ...options,
+    locale,
+    style: 'percent',
+  });
+}
+
+/**
+ * 单位格式化器
+ * @param value 目标值，要格式化的数值
+ * @param unit 单位
+ * @param locale 语言环境配置
+ * @param options 其他配置（省略 style 和 unit）
+ */
+export function formatUnit(
+  value: number,
+  unit: string,
+  locale?: string | string[],
+  options?: Omit<NumberFormatConfig, 'style' | 'unit'>,
+): string {
+  return formatNumber(value, {
+    ...options,
+    locale,
+    style: 'unit',
+    unit,
+  });
+}
+
+/**
+ * 紧凑数字格式化器
+ * @param value 目标值
+ * @param locale 语言环境配置
+ * @param display 紧凑显示样式（short 或 long）
+ */
+export function formatCompact(value: number, locale?: string | string[], display: CompactDisplay = 'short'): string {
+  return formatNumber(value, {
+    locale,
+    notation: 'compact',
+    compactDisplay: display,
+  });
 }

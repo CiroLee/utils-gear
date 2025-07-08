@@ -100,7 +100,7 @@ omitBy(obj, (el) => typeof el === 'string'); // { age: 10 }
 function objectTrueValue<T>(obj: ObjType): T;
 ```
 
-```ts
+```typescript
 const obj = {
   a: 1,
   b: null,

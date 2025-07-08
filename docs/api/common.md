@@ -81,13 +81,13 @@ $('input').addEventListener(
 
 signature:
 
-```ts
+```typescript
 function deepClone<T>(value: Record<string | number | symbol, T> | T[]): Record<string | number | symbol, T> | T[];
 ```
 
 example:
 
-```ts
+```typescript
 const obj = { a: 1, b: 2 };
 const cloneObj = deepClone(obj);
 Object.is(obj, cloneObj); // false

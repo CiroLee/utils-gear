@@ -70,11 +70,11 @@ isNumberLike(''); // true
 
 判断一个对象是否为空
 
-```ts
+```typescript
 function isEmptyObject(obj: ObjType): boolean;
 ```
 
-```ts
+```typescript
 const obj1 = { a: 1, b: null };
 const obj2 = {};
 Object.defineProperty(obj2, 'attr', {
@@ -159,13 +159,13 @@ isPhoneNumber(14234567890, 'high'); // false
 检查字符串是否为中国内地二代身份证号码  
 signature:
 
-```ts
+```typescript
 function isIDNumber(id: string): boolean;
 ```
 
 example:
 
-```ts
+```typescript
 isIDNumber('440301199012301234'); // true
 isIDNumber('440301199912321212'); // false, ps: 日期错误
 ```
@@ -175,13 +175,13 @@ isIDNumber('440301199912321212'); // false, ps: 日期错误
 检查数字是否为浮点数  
 signature:
 
-```ts
+```typescript
 function isFloat(num: number): boolean;
 ```
 
 example:
 
-```ts
+```typescript
 isFloat(1.2); // true
 isFloat(1); // false
 ```
@@ -192,13 +192,13 @@ isFloat(1); // false
 
 signature:
 
-```ts
+```typescript
 function isInt(num: number): boolean;
 ```
 
 example:
 
-```ts
+```typescript
 isInt(1); // true
 isInt(1.2); // false
 isInt(0); // true
@@ -210,13 +210,13 @@ isInt(0); // true
 
 signature:
 
-```ts
+```typescript
 function isUrl(url: string): boolean;
 ```
 
 example:
 
-```ts
+```typescript
 isUrl('https://www.baidu.com'); // true
 isUrl('http://www.baidu.com'); // true
 isUrl('ftp://www.example.com'); // true
@@ -228,13 +228,13 @@ isUrl('ftp://www.example.com'); // true
 
 signature:
 
-```ts
+```typescript
 function isQQNumber(qq: number | string): boolean;
 ```
 
 example:
 
-```ts
+```typescript
 isQQNumber(123456789); // true
 isQQNumber('0123573'); // false
 ```
@@ -245,13 +245,13 @@ isQQNumber('0123573'); // false
 
 signature:
 
-```ts
+```typescript
 function isSparseArray<T>(array: T): boolean;
 ```
 
 example:
 
-```ts
+```typescript
 isSparseArray({}); // false
 isSparseArray([]); // false
 isSparseArray([1, 2, 3]); // false
@@ -264,13 +264,13 @@ isSparseArray([1, 2, , 3]); // true
 
 signature:
 
-```ts
+```typescript
 function isPrimitive(value: unknown): boolean;
 ```
 
 example:
 
-```ts
+```typescript
 isPrimitive(1); // true
 isPrimitive([1]); // false
 ```
@@ -279,13 +279,13 @@ isPrimitive([1]); // false
 
 判断当前浏览器环境是否为手机端signature:
 
-```ts
+```typescript
 function isMobile(): boolean;
 ```
 
 example:
 
-```ts
+```typescript
 // in mobile browser
 isMobile(); // true
 ```

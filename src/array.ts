@@ -8,7 +8,10 @@ import { isAllTrue, isPrimitive } from './validator';
  * @returns {T[]}
  */
 export function fillArray<T>(value: T, length: number): T[] {
-  return new Array(length).fill(value);
+  if (length < 0) {
+    throw new Error('fillArray: length must be a positive number');
+  }
+  return Array.from<T>({ length }).fill(value);
 }
 
 /**
@@ -18,7 +21,7 @@ export function fillArray<T>(value: T, length: number): T[] {
  * @param {Boolean} ascending 是否升序排列
  * @returns {T}
  */
-export function sortArrayByField<T>(objectArray: T[], field: keyof T, ascending = true): T[] {
+export function sortArrayByField<T>(objectArray: T[], field: keyof T, ascending: boolean = true): T[] {
   const copiedArray = [...objectArray];
   function getValue<T = any>(value: T): [boolean, any] {
     if (value === undefined || value === null) return [true, null];
