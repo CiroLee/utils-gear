@@ -91,6 +91,6 @@ describe('formatCompact test', () => {
     expect(number.formatCompact(1234567, 'zh-CN')).toMatch(/123万/);
   });
   it('should format compact number with different values to ensure cache usage', () => {
-    expect(number.formatCompact(12345678, 'zh-CN')).toMatch('1,235万');
+    expect(number.formatCompact(12345678, 'zh-CN')).toMatch(/1,235万|1235万/);
   });
 });

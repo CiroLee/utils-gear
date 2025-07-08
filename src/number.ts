@@ -248,5 +248,6 @@ export function formatCompact(value: number, locale?: string | string[], display
     locale,
     notation: 'compact',
     compactDisplay: display,
+    useGrouping: true,
   });
 }
