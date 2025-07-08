@@ -16,8 +16,10 @@ export class Storage {
     let stringify = '';
     try {
       stringify = JSON.stringify(obj);
-    } catch (error) {
-      console.error(error);
+    } catch (error: unknown) {
+      throw new Error(
+        `Failed to serialize storage value for key "${key}": ${error instanceof Error ? error.message : String(error)}`,
+      );
     }
 
     localStorage.setItem(key, stringify);

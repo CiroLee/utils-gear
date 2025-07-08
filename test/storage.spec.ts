@@ -13,7 +13,7 @@ describe('Storage test', () => {
     const a: any = {};
     a.b = a;
     const val = a;
-    Storage.set('test', val, 1);
+    expect(() => Storage.set('test', val, 1)).toThrow('Failed to serialize storage value');
     expect(mockStorageSet).toHaveBeenCalledTimes(1);
   });
   test('STORAGE: empty storage', () => {
